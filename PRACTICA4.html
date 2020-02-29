@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API estática de Google </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="boton" onclick="obtieneUbicacion()" type="button" class="btn btn-danger">Solicitar Coordenadas</button>
+    <div id="mapa"></div>
+
+    <script>
+        function obtieneUbicacion() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(muestraPosicion);
+            } else {
+                alert("No");
+            }
+
+            function muestraPosicion(posicion) {
+                var coordenadas = posicion.coords.latitude + "," + posicion.coords.longitude;
+                console.log(coordenadas);
+
+                var imagenurl = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas +
+                    "&zoom=20&size=800x800&key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo";
+
+                console.log(imagenurl);
+
+                document.getElementById("mapa").innerHTML = "<img src=" + imagenurl + ">";
+
+            }
+
+        }
+    </script>
+
+
+</body>
+
+</html>

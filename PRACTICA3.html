@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale+1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #p1 {
+            font-size: 50px;
+            color: blanchedalmond;
+        }
+
+        #demo {
+            font-size: 50px;
+            color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p1">Click para obtener las coordenadas</p>
+
+    <button id="boton" onclick="getLocation()" type="button" class="btn btn-danger">Solicitar Coordenadas</button>
+    <p id="demo"></p>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "No tiene geolocalizacion"
+            }
+        }
+
+
+        function showPosition(position) {
+            x.innerHTML = "Latitud:" + position.coords.latitude + "<br>" + "Longitud:" + position.coords.longitude
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto Navigator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #ListaDeDatos {
+            font-size: 50px;
+            color: blanchedalmond;
+        }
+
+        #h1 {
+            font-size: 50px;
+            color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="h1">Informacion sobre el Navegador que usas</h1>
+
+    <button onclick="obtieneDatos()" type="button" class="btn btn-danger">Solicitar Datos</button>
+
+    <ul id="ListaDeDatos">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+        var navegador = document.getElementById("ListaDeDatos");
+        var info = navegador.getElementsByTagName("li");
+
+        function obtieneDatos() {
+            info[0].innerHTML = "Nombre del navegador es: " + navigator.appCodeName;
+            info[1].innerHTML = "La versión del navegador es: " + navigator.appVersion;
+            info[2].innerHTML = "Estatus de internet: " + navigator.onLine;
+            info[3].innerHTML = "Plataforma: " + navigator.platform;
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
