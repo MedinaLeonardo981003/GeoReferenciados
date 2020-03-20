@@ -6,3 +6,4 @@ formula.addEventListener('submit',(e)=> {
     formula.codigo.value ='';
     $('#ventananuevo').modal('hide');
 });
+

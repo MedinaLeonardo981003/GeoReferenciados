@@ -18,3 +18,4 @@ editar.addEventListener('submit',(e)=> {
 
     $('#ventanaeditar').modal('hide');
 });
+
