@@ -32,22 +32,24 @@
             </div>
             <form id="formas">
                 <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre ">
+                    <div class="col-12 col-md-4 py-2">
+                        <input type="text" name="nombre" required class="form-control" placeholder="Nombre">
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" name="codigo" class="form-control" placeholder="Codigo ">
+                    <div class="col-12 col-md-4 py-2">
+                        <input type="text" name="codigo" required class="form-control" placeholder="Código">
                     </div>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">Agregar</button>
-                    </div>
-                    <div class="col-md-4">
-                        <ul id="lista" class="list-group"></ul>
+                    <div class="col-12 col-md-4 py-2">
+                        <button type="submit" class="btn btn-primary">Agregar <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 col-md-8 p-2">
                     <ul id="lista" class="list-group"></ul>
                 </div>
             </div>
