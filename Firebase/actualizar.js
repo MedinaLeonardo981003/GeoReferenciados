@@ -1,9 +1,9 @@
-formularioeditar.addEventListener('submit',(e)=> {
+editar.addEventListener('submit',(e)=> {
     e.preventDefault();
 
-    let id =formularioeditar.ideditar.value;
-    let nombre =formularioeditar.nombreeditar.value;
-    let codigo =formularioeditar.codigoeditar.value;
+    let id =editar.ideditar.value;
+    let nombre =editar.nombreeditar.value;
+    let codigo =editar.codigoeditar.value;
 
     var registro = new Registro(id,nombre,codigo);
 
@@ -13,8 +13,9 @@ formularioeditar.addEventListener('submit',(e)=> {
     idregistro.querySelector('.nombre').value = nombre + ' ';
     idregistro.querySelector('.codigo').value = codigo + ' ' ;
 
-    formularioeditar.nombreeditar.value ='';
-    formularioeditar.codigoeditar.value ='';
+    editar.nombreeditar.value ='';
+    editar.codigoeditar.value ='';
 
     $('#ventanaeditar').modal('hide');
 });
+

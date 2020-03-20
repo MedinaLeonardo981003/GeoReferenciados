@@ -18,9 +18,9 @@ class Registro {
     }
 
     editar(id){    
-        editar.nombreeditar.value = this.nombre;
-        editar.codigoeditar.value = this.codigo;
-        editar.ideditar.value = this.id;
+        formularioeditar.nombreeditar.value = this.nombre;
+        formularioeditar.codigoeditar.value = this.codigo;
+        formularioeditar.ideditar.value = this.id;
     };
 
     actualizar(){    

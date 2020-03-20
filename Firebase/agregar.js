@@ -1,8 +1,9 @@
-formulario.addEventListener('submit',(e)=> {
+formula.addEventListener('submit',(e)=> {
     e.preventDefault();
-    var registro = new Registro(null,formulario.nombre.value,formulario.codigo.value);
+    var registro = new Registro(null,formula.nombre.value,formula.codigo.value);
     registro.agregar();
-    formulario.nombre.value ='';
-    formulario.codigo.value ='';
+    formula.nombre.value ='';
+    formula.codigo.value ='';
     $('#ventananuevo').modal('hide');
 });
+
