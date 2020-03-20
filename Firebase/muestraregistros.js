@@ -1,4 +1,4 @@
-function registris(doc){
+function muestraRegistros(doc){
             
     var registro = new Registro(doc.id,doc.data().nombre,doc.data().codigo);
         
