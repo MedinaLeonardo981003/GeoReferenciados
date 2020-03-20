@@ -5,6 +5,7 @@ var firebaseConfig = {
     projectId: "sistemasgeo-269604",
     storageBucket: "sistemasgeo-269604.appspot.com",
     messagingSenderId: "469478462975",
+    measurementId: "G-YCSEWHFHL3"
 };
 
 firebase.initializeApp(firebaseConfig);
