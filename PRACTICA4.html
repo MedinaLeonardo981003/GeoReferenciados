@@ -9,15 +9,15 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
-        body {
+        #body {
             background-color: black;
         }
     </style>
 </head>
 
-<body>
+<body id="body">
     <button id="boton" onclick="obtieneubicacion()" type="button" class="btn btn-danger">Solicitar Coordenadas</button>
-    <div id="mapa"
+    <div id="map"
         style="padding-left: 50px; border: #CCC 10px solid; background-color: black; width: 800px; height: 400px;">
     </div>
 
@@ -35,9 +35,9 @@
             var coordenadas = posicion.coords.latitude + "," + posicion.coords.longitude;
             console.log(coordenadas);
 
-            var imageurl = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas + "&zoom=15&size=400x400&key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA";
+            var imageurl = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas + "&zoom=15&size=400x400&key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo";
 
-            document.getElementById("mapa").innerHTML = "<img src=" + imageurl + ">"
+            document.getElementById("map").innerHTML = "<img src=" + imageurl + ">"
 
         }
     </script>
