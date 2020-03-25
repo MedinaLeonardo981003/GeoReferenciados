@@ -1,7 +1,7 @@
-function muestraRegistros(doc){
-            
-    var registro = new Registro(doc.id,doc.data().nombre,doc.data().codigo);
-        
+function muestraRegistros(doc) {
+
+    var registro = new Registro(doc.id, doc.data().nombre, doc.data().codigo);
+
     let li = document.createElement("li");
     li.setAttribute("id", registro.id);
 
@@ -31,13 +31,13 @@ function muestraRegistros(doc){
     li.appendChild(codigo);
     productoslista.appendChild(li);
 
-    borrar.addEventListener("click", (e) => {   
-        let id = e.target.parentElement.getAttribute("id");             
+    borrar.addEventListener("click", (e) => {
+        let id = e.target.parentElement.getAttribute("id");
         registro.borrar(id);
     });
 
-    editar.addEventListener("click", (e) => {   
-        let id = e.target.parentElement.getAttribute("id");   
+    editar.addEventListener("click", (e) => {
+        let id = e.target.parentElement.getAttribute("id");
         registro.editar(id);
     });
 

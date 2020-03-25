@@ -21,16 +21,17 @@
         color: blanchedalmond;
     }
 </style>
+
 <body>
 
     <div class="container-fluid" id="colorText">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Lista de Productos</h1>
+                    <h3><i class="fas fa-boxes text-primary"></i> Lista de productos</h3>
                 </div>
             </div>
-            <form id="formas">
+            <form id="forma">
                 <div class="row">
                     <div class="col-12 col-md-4 py-2">
                         <input type="text" name="nombre" required class="form-control" placeholder="Nombre">
@@ -46,7 +47,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="colorText">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-8 p-2">
@@ -57,101 +58,93 @@
     </div>
 
 
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDz9eU3g_4ISZRFtsAKOG4xnYdeeWSy-1w",
+            authDomain: "sistemasgeo-269604.firebaseapp.com",
+            databaseURL: "https://sistemasgeo-269604.firebaseio.com",
+            projectId: "sistemasgeo-269604",
+            storageBucket: "sistemasgeo-269604.appspot.com",
+            messagingSenderId: "469478462975",
+            appId: "1:469478462975:web:f6b71e5130211f8e7f43ca",
 
-            <script>
-                // Your web app's Firebase configuration
-                var firebaseConfig = {
-                    apiKey: "AIzaSyDz9eU3g_4ISZRFtsAKOG4xnYdeeWSy-1w",
-                    authDomain: "sistemasgeo-269604.firebaseapp.com",
-                    databaseURL: "https://sistemasgeo-269604.firebaseio.com",
-                    projectId: "sistemasgeo-269604",
-                    storageBucket: "sistemasgeo-269604.appspot.com",
-                    messagingSenderId: "469478462975",
-                    appId: "1:469478462975:web:f6b71e5130211f8e7f43ca",
-                    
-                };
+        };
 
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
-                const db = firebase.firestore();
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-                const productosLista = document.querySelector("#lista");
+        const productoslista = document.querySelector("#lista");
 
-                const formularios = document.querySelector("#formas");
+        const formulario = document.querySelector("#forma");
 
-                function renderProductos(doc) {
-                    console.log(doc.id);
-                    let li = document.createElement("li");
-                    let nombre = document.createElement("span");
-                    let codigo = document.createElement("span");
-                    let borrar = document.createElement("button");
+        function renderProductos(doc) {
 
-                    borrar.className = "btn btn-danger"
 
-                    nombre.textContent = doc.data().nombre;
-                    codigo.textContent = doc.data().codigo;
-                    borrar.textContent = "Borrar";
+            let li = document.createElement("li");
+            let nombre = document.createElement("span");
+            let codigo = document.createElement("span");
+            let borrar = document.createElement("button");
 
-                    li.setAttribute("id", doc.id)
+            borrar.className = "btn btn-danger m-3";
 
-                    li.appendChild(borrar);
-                    li.appendChild(nombre);
-                    li.appendChild(codigo);
+            nombre.textContent = doc.data().nombre + " ";
+            codigo.textContent = doc.data().codigo + " ";
+            borrar.textContent = "Borrar  ";
 
-                    productosLista.appendChild(li);
+            li.setAttribute("id", doc.id);
+            li.appendChild(borrar);
+            li.appendChild(nombre);
+            li.appendChild(codigo);
 
-                    borrar.addEventListener("click", (e) => {
-                        let id = e.target.parentElement.getAttribute("id");
-                        db.collection('productos').doc(id).delete();
-                    });
+            productoslista.appendChild(li);
+
+            borrar.addEventListener("click", (e) => {
+                let id = e.target.parentElement.getAttribute("id");
+                db.collection("productos").doc(id).delete();
+            });
+        }
+
+        //Guarda datos
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            db.collection('productos').add({
+                nombre: formulario.nombre.value,
+                codigo: formulario.codigo.value
+            });
+
+            formulario.nombre.value = '';
+            formulario.codigo.value = '';
+
+        });
+
+
+        db.collection('productos').onSnapshot(snapshot => {
+            let changes = snapshot.docChanges();
+            changes.forEach(change => {
+                if (change.type == 'added') {
+                    renderProductos(change.doc);
+                } else if (change.type == 'removed') {
+                    console.log(change.doc.id);
+                    let valorid = document.getElementById(change.doc.id);
+                    lista.removeChild(valorid);
                 }
+            });
+        });
+    </script>
 
-                /*db.collection('productos').get().then((snapshot) => {
-                    snapshot.docs.forEach(doc => {
-                        renderProductos(doc);
-                    });
-                });*/
-
-                formularios.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    db.collection("productos").add({
-                        nombre: formularios.nombre.value,
-                        codigo: formularios.codigo.value
-                    });
-
-                    formularios.nombre.value = "";
-                    formularios.codigo.value = "";
-                });
-
-                db.collection("productos").onSnapshot(snapshot => {
-                    let changes = snapshot.docChanges();
-                    changes.forEach(change => {
-                        if (change.type == "added") {
-                            renderProductos(change.doc);
-                        } else if (change.type == "removed") {
-                            console.log(change.doc.id);
-                            let valorid = document.getElementById(change.doc.id);
-                            lista.removeChild(valorid);
-                        }
-                    });
-                });
-            </script>
-
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                crossorigin="anonymous">
-            </script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                crossorigin="anonymous">
-            </script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                crossorigin="anonymous">
-            </script>
-            <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo&callback=mapascar"
-                async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo&callback=mapascar"
+        async defer></script>
 </body>
 
 </html>
