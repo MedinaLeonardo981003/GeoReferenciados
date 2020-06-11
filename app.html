@@ -1,4 +1,9 @@
-
+<style>
+    #map-canvas {
+        width: 400px;
+        height: 400px;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,52 +11,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        #map-canvas {
-            width: 400px;
-            height: 400px;
-        }
-    </style>
 </head>
 
 <body>
     <input type="text" id="mapsearch" size="50">
-    <button onclick="iniciaMapa()"></button>
-    <div id="map-canvas">
-        
-    </div>
+    <div id="map-canvas"></div>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo&libraries=places"
-        async defer></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-oRjbCzRmnSpeChEfnid2e1Tbp2cgHo&libraries=places"></script>
     <script>
-        function iniciaMapa(){
-        var propiedades = {
-            center: {
-                lat: 21.152639,
-                lng: -101.711598
-            },
-            zoom: 12
-
-        };
-
-        var mapa = document.getElementById("map-canvas");
-
-        var map = new google.maps.Map(mapa, propiedades);
-
-        var marker = new google.maps.Marker({
-            position: {
-                lat: 0,
-                lng: 0
-            },
-            draggable: true,
-            map: map
-        });
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: {
+                        lat:27.72,
+                        lng:85.36
+                    },
+                    zoom:15
+                });
 
 
-        var searchbox = new googl.maps.places.Searchbox(document.getElementById('mapsearch'));
-    }
+                var marker = new google.maps.Marker({
+                    position:{
+                        lat:27.72,
+                        lng:85.36
+                    },
+                    map:map,
+                    draggable: true
+                });
+
+                var searchbox = new googl.maps.places.Searchbox(document.getElementById('mapsearch'));
     </script>
 </body>
 
