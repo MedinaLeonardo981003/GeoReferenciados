@@ -48,7 +48,7 @@
    var map = new google.maps.Map(mapa, propiedades);
 
    var icono = {
-     url: "https://img2.freepng.es/20180328/dgw/kisspng-computer-icons-clip-art-location-icon-5abbd61f226b90.002138791522259487141.jpg",
+     url: "../img/gps.png",
      scaledSize: new google.maps.Size(25, 25),
      origin: new google.maps.Point(0, 0),
      anchor: new google.maps.Point(0, 0)
