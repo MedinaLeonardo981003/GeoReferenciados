@@ -60,24 +60,22 @@
 
      if (navigator.geolocation) {
 
-       boton.addEventListener('click', function () {
+
+       watchId = navigator.geolocation.watchPosition(function (position) {
+         var lat = position.coords.latitude;
+         var lng = position.coords.longitude;
+
+         console.log(position);
+
+         var coordenadas = lat + ',' + lng;
+
+         var exactitud = position.coords.accuracy ? position.coords.accuracy : 'no disponible';
+         var altitud = position.coords.altitude ? position.coords.altitude : 'no disponible';
+         var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
+         var fechayhora = (new Date(position.timestamp)).toString();
 
 
-         watchId = navigator.geolocation.watchPosition(function (position) {
-           var lat = position.coords.latitude;
-           var lng = position.coords.longitude;
-
-           console.log(position);
-
-           var coordenadas = lat + ',' + lng;
-
-           var exactitud = position.coords.accuracy ? position.coords.accuracy : 'no disponible';
-           var altitud = position.coords.altitude ? position.coords.altitude : 'no disponible';
-           var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
-           var fechayhora = (new Date(position.timestamp)).toString();
-
-
-           const html = `
+         const html = `
                   <p>Coordenadas: ${ coordenadas }</p>
                   <p>Exactitud: ${ exactitud }</p>
                   <p>Altitud: ${ altitud }</p>
@@ -85,32 +83,13 @@
                   <p>Fecha y hora: ${ fechayhora }</p>
               `;
 
-           const datos = document.getElementById('datos');
-           datos.innerHTML = html;
+         const datos = document.getElementById('datos');
+         account.innerHTML = html;
 
-           marker.setPosition(new google.maps.LatLng(lat, lng));
-           map.panTo(new google.maps.LatLng(lat, lng));
+         marker.setPosition(new google.maps.LatLng(lat, lng));
+         map.panTo(new google.maps.LatLng(lat, lng));
 
-         }, error, positionOptions);
-       });
-
-       const botondetener = document.getElementById('botondetener');
-
-       botondetener.addEventListener('click', function () {
-
-         if (watchId !== null) {
-           navigator.geolocation.clearWatch(watchId);
-
-           const html = `
-                  <p>Se detuvo el monitoreo</p>
-              `;
-
-           const datos = document.getElementById('datos');
-           datos.innerHTML = html;
-
-         }
-       });
-
+       }, error, positionOptions);
      }
 
 
