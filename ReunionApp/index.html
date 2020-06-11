@@ -46,6 +46,11 @@
       margin-bottom: auto;
       align-items: center;
     }
+
+    #mapCanvas {
+      width: 450;
+      height: 450px;
+    }
   </style>
 </head>
 
@@ -58,7 +63,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#addreunionmodal">Agregar
+        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#addreunionmodal"
+          onclick="iniciaMapasss()">Agregar
           Reunion</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
         <a class="nav-item nav-link logged-in" href="#" id="salir">Salir</a>
@@ -200,25 +206,25 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="row m-2">
-            <div class="col-12 account">
-              <p id="raccount"></p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
           <form id="formaAdd" autocomplete="off">
             <div class="row m-2">
               <div class="col-12">
-                <input type="text" class="form-control" id="rnombre" required placeholder="Name">
+                <p id="raccount"></p>
+                <input type="text" class="form-control" id="rnombre" required placeholder="Name (Obligatory)">
               </div>
             </div>
-            <div id="mapCanvas">
-              
+            <div class="modal-body">
+              <div id="mapCanvas">
+              </div>
+              <div class="latlong-view">
+                <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+                <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+            </div>
             </div>
             <div class="row text-center">
               <div class="col-12">
-                <input type="submit" class="btn btn-primary" value="Agregar" onclick="return iniciaMapa();">
+                <input type="button" class="btn btn-primary" value="Obtener coordenadas" onclick="coords()">
+                <input type="submit" class="btn btn-primary" value="Agregar">
                 <p class="error text-danger"></p>
               </div>
             </div>
@@ -232,7 +238,7 @@
   </div>
 
 
-  <div id="map" >
+  <div id="map">
     <div>
     </div>
   </div>
@@ -269,6 +275,9 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHsXycoYXIZKYz21l6AYIf_bqYJknuj0&callback=iniciaMapa"
     async defer></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDDHsXycoYXIZKYz21l6AYIf_bqYJknuj0&callback=iniciaMapasss"></script>
+
 </body>
 
 </html>

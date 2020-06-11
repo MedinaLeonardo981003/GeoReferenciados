@@ -14,7 +14,6 @@ auth.onAuthStateChanged(user => {
         console.log('Usuario salió');
         configuraMenu();
     }
-
 });
 
 
@@ -140,7 +139,7 @@ formaAdd.addEventListener('submit', (e) => {
     var emails1 = document.getElementById("raccount");
     var emails2 = emails1.outerHTML;
     var emails3 = emails2.substring("17")
-    var emails4 = emails3.substring("16", emails3.indexOf('×'));
+    var emails4 = emails3.substring("16", emails3.indexOf(','));
     addEventListener('submit', (e) => {
         e.preventDefault();
         db.collection('reuniones').add({
@@ -156,73 +155,57 @@ formaAdd.addEventListener('submit', (e) => {
 })
 
 
+const lati = document.getElementById('latitude_view');
+const lngu = document.getElementById('longitude_view');
+
+function iniciaMapasss() {
+
+    var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+        center: {
+            lat: 21.152639,
+            lng: -101.711598
+        },
+        zoom: 15
+    });
 
 
-
-
-
-
-
-
-
-
-
-
-
- 
-const formaAdd = document.getElementById('mapCanvas');
-
-
-var position = [40.748774, -73.985763];
-
-function addmarker() { 
-    var latlng = new google.maps.LatLng(position[0], position[1]);
-    var myOptions = {
-        zoom: 16,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
-
-    marker = new google.maps.Marker({
-        position: latlng,
+    var markersito = new google.maps.Marker({
+        position: {
+            lat: 21.152639,
+            lng: -101.711598
+        },
         map: map,
-        title: "Latitude:"+position[0]+" | Longitude:"+position[1]
+        draggable: true
     });
 
-    google.maps.event.addListener(map, 'click', function(event) {
-        var result = [event.latLng.lat(), event.latLng.lng()];
-        transition(result);
+    google.maps.event.addListener(markersito, 'dragend', function (event) {
+        var position = event.latLng;
+        lati.innerHTML = markersito.getPosition().lat();
+        lngu.innerHTML = markersito.getPosition().lng();
+        console.log(position);
     });
-}
 
-//Load google map
-google.maps.event.addDomListener(window, 'load', initialize);
-
-
-var numDeltas = 100;
-var delay = 10; //milliseconds
-var i = 0;
-var deltaLat;
-var deltaLng;
-
-function transition(result){
-    i = 0;
-    deltaLat = (result[0] - position[0])/numDeltas;
-    deltaLng = (result[1] - position[1])/numDeltas;
-    moveMarker();
-}
-
-function moveMarker(){
-    position[0] += deltaLat;
-    position[1] += deltaLng;
-    var latlng = new google.maps.LatLng(position[0], position[1]);
-    marker.setTitle("Latitude:"+position[0]+" | Longitude:"+position[1]);
-    marker.setPosition(latlng);
-    if(i!=numDeltas){
-        i++;
-        setTimeout(moveMarker, delay);
-    }
 }
 
 
+/*const search = document.getElementById('search_input');
+
+function initmap(){
+    var searchInput = search;
+
+    $(document).ready(function () {
+      var autocomplete;
+      autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        types: ['geocode'],
+      });
+
+      google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+        document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+        document.getElementById('loc_long').value = near_place.geometry.location.lng();
+
+        document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+        document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+      });
+    });
+}*/

@@ -12,21 +12,20 @@
                 <p>Correo: ${ user.email}</p>
             `;
        const html1 = `
-            <p>${ user.email}×</p>
+            <p>${ user.email}</p>
         `;
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
      });
 
-
      iniciaMapa();
-
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
 
 
    } else {
      datosdelacuenta.innerHTML = '';
+     mapinfo.innerHTML = "";
      listaloggedin.forEach(item => item.style.display = 'none');
      listaloggedout.forEach(item => item.style.display = 'block');
    }
@@ -105,5 +104,3 @@
      console.log(positioError.messsage);
    }
  }
-
-
