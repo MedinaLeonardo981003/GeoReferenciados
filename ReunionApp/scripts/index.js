@@ -88,7 +88,7 @@
        var fechayhora = (new Date(position.timestamp)).toString();
 
 
-       const html = `
+       const html2 = `
                   <p>Coordenadas: ${ coordenadas }</p>
                   <p>Exactitud: ${ exactitud }</p>
                   <p>Altitud: ${ altitud }</p>
@@ -97,7 +97,7 @@
               `;
 
        const datos = document.getElementById('datos');
-       datos.innerHTML = html;
+       account.innerHTML = html2;
 
        marker.setPosition(new google.maps.LatLng(lat, lng));
        map.panTo(new google.maps.LatLng(lat, lng));
