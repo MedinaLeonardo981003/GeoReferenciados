@@ -2,7 +2,7 @@
  const listaloggedin = document.querySelectorAll('.logged-in');
  const datosdelacuenta = document.querySelector('.datosdelacuenta');
  const account = document.getElementById('raccount');
- const mapinfo = document.getElementById('mapinfo');
+ const mapinfo = document.getElementById('map');
 
  const configuraMenu = (user) => {
    if (user) {
@@ -83,8 +83,6 @@
 
        var coordenadas = lat + ',' + lng;
 
-       var exactitud = position.coords.accuracy ? position.coords.accuracy : 'no disponible';
-       var altitud = position.coords.altitude ? position.coords.altitude : 'no disponible';
        var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
        var fechayhora = (new Date(position.timestamp)).toString();
 
