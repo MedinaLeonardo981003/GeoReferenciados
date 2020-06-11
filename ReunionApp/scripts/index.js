@@ -48,7 +48,7 @@
    var map = new google.maps.Map(mapa, propiedades);
 
    var icono = {
-     url: "https://media.giphy.com/media/1ZweHMlSaxcc32mSSu/giphy.gif",
+     url: "https://www.pngitem.com/pimgs/m/23-235870_google-location-icon-png-location-symbol-red-png.png",
      scaledSize: new google.maps.Size(25, 25),
      origin: new google.maps.Point(0, 0),
      anchor: new google.maps.Point(0, 0)
