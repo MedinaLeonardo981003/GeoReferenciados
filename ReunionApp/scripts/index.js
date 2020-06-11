@@ -2,6 +2,7 @@
  const listaloggedin = document.querySelectorAll('.logged-in');
  const datosdelacuenta = document.querySelector('.datosdelacuenta');
  const account = document.getElementById('raccount');
+ const mapinfo = document.getElementById('mapinfo');
 
  const configuraMenu = (user) => {
    if (user) {
@@ -96,8 +97,7 @@
                   <p>Fecha y hora: ${ fechayhora }</p>
               `;
 
-       const datos = document.getElementById('datos');
-       account.innerHTML = html2;
+       mapinfo.innerHTML = html2;
 
        marker.setPosition(new google.maps.LatLng(lat, lng));
        map.panTo(new google.maps.LatLng(lat, lng));
