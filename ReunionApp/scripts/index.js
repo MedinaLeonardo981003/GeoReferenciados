@@ -90,9 +90,6 @@
 
 
        const html2 = `
-                  <p>Coordenadas: ${ coordenadas }</p>
-                  <p>Exactitud: ${ exactitud }</p>
-                  <p>Altitud: ${ altitud }</p>
                   <p>Velocidad: ${ velocidad }</p>
                   <p>Fecha y hora: ${ fechayhora }</p>
               `;
