@@ -83,7 +83,7 @@
 
        var coordenadas = lat + ',' + lng;
 
-       var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
+       /*var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
        var fechayhora = (new Date(position.timestamp)).toString();
 
 
@@ -92,7 +92,7 @@
                   <p>Fecha y hora: ${ fechayhora }</p>
               `;
 
-       mapinfo.innerHTML = html2;
+       mapinfo.innerHTML = html2;*/
 
        marker.setPosition(new google.maps.LatLng(lat, lng));
        map.panTo(new google.maps.LatLng(lat, lng));
