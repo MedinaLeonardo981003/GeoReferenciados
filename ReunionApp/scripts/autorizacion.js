@@ -130,8 +130,6 @@ entrarGoogle = () => {
 
 const formaAdd = document.getElementById('formaAdd');
 
-
-
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -140,11 +138,26 @@ formaAdd.addEventListener('submit', (e) => {
     var emails2 = emails1.outerHTML;
     var emails3 = emails2.substring("17")
     var emails4 = emails3.substring("16", emails3.indexOf(','));
+
+    var lat1 = document.getElementById("latitude_view");
+    var lat2 = lat1.outerHTML;
+    var lat3 = lat2.substring("17")
+    var lat4 = lat3.substring("8", lat3.indexOf('|'));
+    var lat5 = parseFloat(lat4);
+
+    var long1 = document.getElementById("longitude_view");
+    var long2 = long1.outerHTML;
+    var long3 = long2.substring("17")
+    var long4 = long3.substring("9", long3.indexOf('|'));
+    var long5 = parseFloat(long4);
+
     addEventListener('submit', (e) => {
         e.preventDefault();
         db.collection('reuniones').add({
             nombre: formaAdd['rnombre'].value,
-            email: emails4
+            email: emails4,
+            latitud: lat5,
+            longitud: long5
         });
 
         $('#addreunionmodal').modal('hide');
@@ -180,8 +193,8 @@ function iniciaMapasss() {
 
     google.maps.event.addListener(markersito, 'dragend', function (event) {
         var position = event.latLng;
-        lati.innerHTML = markersito.getPosition().lat();
-        lngu.innerHTML = markersito.getPosition().lng();
+        lati.innerHTML = markersito.getPosition().lat() + "|";
+        lngu.innerHTML = markersito.getPosition().lng() + "|";
         console.log(position);
     });
 
@@ -189,7 +202,6 @@ function iniciaMapasss() {
 
 
 /*const search = document.getElementById('search_input');
-
 function initmap(){
     var searchInput = search;
 

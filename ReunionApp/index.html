@@ -67,6 +67,7 @@
           onclick="iniciaMapasss()">Agregar
           Reunion</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
+        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentaReuniones">Mis Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" id="salir">Salir</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal"
@@ -194,6 +195,31 @@
     </div>
   </div>
 
+  <!-- Modal MisReuniones -->
+  <div class="modal fade" id="micuentaReuniones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="micuentaReunionesLabel">Mis reuniones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row m-2">
+            <div class="col-12 reunionesdelacuenta">
+              <div id="childpid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal AddReunion -->
   <div class="modal fade" id="addreunionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -208,23 +234,23 @@
         <div class="modal-body">
           <form id="formaAdd" autocomplete="off">
             <div class="row m-2">
-              <div class="col-12">
-                <p id="raccount"></p>
-                <input type="text" class="form-control" id="rnombre" required placeholder="Name (Obligatory)">
+              <div class="col-12" hidden>
+                <p  id="raccount"></p>        
               </div>
+              <input type="text" class="form-control" id="rnombre" required placeholder="Name (Obligatory)">
             </div>
             <div class="modal-body">
+              <p>*Arrastra el marcador a la ubicacion donde sera tu reunion*</p>
               <div id="mapCanvas">
               </div>
               <div class="latlong-view">
-                <p><b>Latitude:</b> <span id="latitude_view"></span></p>
-                <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+                <p hidden><b>Latitude:</b> <span id="latitude_view"></span></p>
+                <p hidden><b>Longitude:</b> <span id="longitude_view"></span></p>
             </div>
             </div>
             <div class="row text-center">
               <div class="col-12">
-                <input type="button" class="btn btn-primary" value="Obtener coordenadas" onclick="coords()">
-                <input type="submit" class="btn btn-primary" value="Agregar">
+                <input type="submit" id="smitadd" class="btn btn-primary" value="Agregar">
                 <p class="error text-danger"></p>
               </div>
             </div>
@@ -262,22 +288,15 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
     const auth = firebase.auth();
-
     const db = firebase.firestore();
   </script>
 
   <script src="scripts/autorizacion.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/micuenta.js"></script>
-
-
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHsXycoYXIZKYz21l6AYIf_bqYJknuj0&callback=iniciaMapa"
     async defer></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDDHsXycoYXIZKYz21l6AYIf_bqYJknuj0&callback=iniciaMapasss"></script>
-
 </body>
 
 </html>

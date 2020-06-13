@@ -3,6 +3,7 @@
  const datosdelacuenta = document.querySelector('.datosdelacuenta');
  const account = document.getElementById('raccount');
  const mapinfo = document.getElementById('map');
+ const reunionesdelacuenta = document.querySelector('.reunionesdelacuenta');
 
  const configuraMenu = (user) => {
    if (user) {
@@ -12,16 +13,44 @@
                 <p>Correo: ${ user.email}</p>
             `;
        const html1 = `
-            <p>${ user.email}</p>
+            <p>${ user.email},</p>
         `;
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
      });
+     arreglo = [];
+     var emialuser = user.email;
+     var count = 0;
+     db.collection('reuniones').get().then(doc => {
+       doc.docs.forEach(doc => {
+         //console.log(doc.id);
+         if (doc.data().email == emialuser) {
+           data = {
+             "ID": doc.id,
+             "email": doc.data().email,
+             "nombre": doc.data().nombre
+           };
+           arreglo.push(data);
+
+           for (i = 0; i < arreglo.length; i++) {
+             var nodo = document.createElement("p");
+
+             nodo.innerHTML = " Id: " + arreglo[i].ID + "  Reunion: " + arreglo[i].nombre + "." + "."
+             console.log("este es el contador de g  " + i);
+             document.getElementById("childpid").appendChild(nodo);
+           }
+           console.log("se salio  " +  i);
+         } else {
+           //console.log("No entro if")
+         }
+         //console.log("No entro for")
+       });
+       //console.warn(arreglo);
+     })
 
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
-
 
    } else {
      datosdelacuenta.innerHTML = '';
@@ -30,6 +59,7 @@
      listaloggedout.forEach(item => item.style.display = 'block');
    }
  }
+
 
  function iniciaMapa() {
 
