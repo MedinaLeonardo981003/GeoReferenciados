@@ -27,7 +27,7 @@
      arreglo = [];
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio5");
+     console.log( "Cambio4");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log( "Mi id:  " + doc.id);
@@ -54,7 +54,7 @@
        //console.warn(arreglo);
      })
 
-     arreglo = arreglo.length = 0;
+
      console.log(arreglo + 'arr')
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
