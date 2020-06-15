@@ -5,7 +5,7 @@
  const mapinfo = document.getElementById('map');
  const reunionesdelacuenta = document.querySelector('.reunionesdelacuenta');
  const correodrop = document.getElementById('correodrop');
- const correodrop2 = document.getElementById('correodrop2');
+ const correoenter = document.getElementById('correoenter');
 
 
  const configuraMenu = (user) => {
@@ -21,7 +21,7 @@
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
        correodrop.innerHTML = html1;
-       correodrop2.innerHTML = html1;
+       correoenter.innerHTML = html1;
      });
 
      arreglo = [];
