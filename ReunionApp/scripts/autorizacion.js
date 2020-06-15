@@ -131,7 +131,7 @@ entrarGoogle = () => {
 
 
 const formaAdd = document.getElementById('formaAdd');
-const childpid = document.getElementById('childpid');
+const formaAct = document.getElementById('formaAct');
 
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -180,8 +180,8 @@ formaAdd.addEventListener('submit', (e) => {
         alert("Reunion creada con exito");
 
         $('#micuentaReuniones').modal('hide');
-        childpid.reset();
-        childpid.querySelector('.error').innerHTML = '';;
+        formaAct.reset();
+        formaAct.querySelector('.error').innerHTML = '';;
     })
 })
 
