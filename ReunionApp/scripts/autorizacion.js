@@ -180,6 +180,7 @@ formaAdd.addEventListener('submit', (e) => {
         alert("Reunion creada con exito");
 
         formaAct.innerHTML = '';
+        configuraMenu(user);
     })
 })
 
