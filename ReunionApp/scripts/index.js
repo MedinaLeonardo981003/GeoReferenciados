@@ -38,19 +38,12 @@
              "codigo": doc.data().codigo
            };
            arreglo.push(data);
-           if (count < arreglo.length) {
+           while (count < arreglo.length) {
+             var nodo = document.createElement("p");
 
-             while (count < arreglo.length) {
-               var nodo = document.createElement("p");
-
-               nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre + " | Codigo: " + arreglo[count].codigo + " |";
-               document.getElementById("childpid").appendChild(nodo);
-               count = count + 1;
-             }
-           } else {
-             console.log("add 1");
-             nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre + " | Codigo: " + arreglo[count].codigo + " |";
+             nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre +  " | Codigo: " + arreglo[count].codigo + " |";
              document.getElementById("childpid").appendChild(nodo);
+             count = count + 1;
            }
          } else {
            //console.log("No entro if")
@@ -63,7 +56,7 @@
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
-
+     arreglo = [];
    } else {
      datosdelacuenta.innerHTML = '';
      mapinfo.innerHTML = "";
