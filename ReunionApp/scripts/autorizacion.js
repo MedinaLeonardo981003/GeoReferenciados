@@ -178,6 +178,7 @@ formaAdd.addEventListener('submit', (e) => {
 
 
 
+
         $('#addreunionmodal').modal('hide');
         formaAdd.reset();
         formaAdd.querySelector('.error').innerHTML = '';
