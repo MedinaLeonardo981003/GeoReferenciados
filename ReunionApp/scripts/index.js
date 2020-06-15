@@ -27,7 +27,7 @@
      arreglo = [];
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio2");
+     console.log( "Cambio3");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log( "Mi id:  " + doc.id);
@@ -46,6 +46,7 @@
              document.getElementById("childpid").appendChild(nodo);
              count = count + 1;
            }
+           arreglo = arreglo.length = 0;
          } else {
            //console.log("No entro if")
          }
@@ -54,7 +55,6 @@
        //console.warn(arreglo);
      })
 
-     arreglo.splice(0,arreglo.length)
      console.log(arreglo + 'arr splice')
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
