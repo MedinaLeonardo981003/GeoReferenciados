@@ -131,7 +131,7 @@ entrarGoogle = () => {
 
 
 const formaAdd = document.getElementById('formaAdd');
-const formaAct = document.getElementById('formaAct');
+const formaAct = document.getElementById("childpid");
 
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
