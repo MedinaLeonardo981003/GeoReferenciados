@@ -131,6 +131,7 @@ entrarGoogle = () => {
 
 
 const formaAdd = document.getElementById('formaAdd');
+const childpid = document.getElementById('childpid');
 
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -172,12 +173,15 @@ formaAdd.addEventListener('submit', (e) => {
             codigo: result
         });
 
-        configuraMenu(user);
 
         $('#addreunionmodal').modal('hide');
         formaAdd.reset();
         formaAdd.querySelector('.error').innerHTML = '';
         alert("Reunion creada con exito");
+
+        $('#micuentaReuniones').modal('hide');
+        childpid.reset();
+        childpid.querySelector('.error').innerHTML = '';;
     })
 })
 
