@@ -17,6 +17,8 @@ auth.onAuthStateChanged(user => {
 });
 
 
+
+
 const formaregistrate = document.getElementById('formaregistrate');
 
 formaregistrate.addEventListener('submit', (e) => {
@@ -151,14 +153,27 @@ formaAdd.addEventListener('submit', (e) => {
     var long4 = long3.substring("9", long3.indexOf('|'));
     var long5 = parseFloat(long4);
 
+    var length = 5;
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    console.log("resultado   " + result);
+
+
     addEventListener('submit', (e) => {
         e.preventDefault();
         db.collection('reuniones').add({
             nombre: formaAdd['rnombre'].value,
             email: emails4,
             latitud: lat5,
-            longitud: long5
+            longitud: long5,
+            codigo: result
+
         });
+
 
         $('#addreunionmodal').modal('hide');
         formaAdd.reset();
@@ -201,23 +216,87 @@ function iniciaMapasss() {
 }
 
 
-/*const search = document.getElementById('search_input');
-function initmap(){
-    var searchInput = search;
+const formaDrop = document.getElementById('formaDrop');
 
-    $(document).ready(function () {
-      var autocomplete;
-      autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-        types: ['geocode'],
-      });
+formaDrop.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-      google.maps.event.addListener(autocomplete, 'place_changed', function () {
-        var near_place = autocomplete.getPlace();
-        document.getElementById('loc_lat').value = near_place.geometry.location.lat();
-        document.getElementById('loc_long').value = near_place.geometry.location.lng();
 
-        document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
-        document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
-      });
+    var user = firebase.auth().currentUser;
+    var drop = document.getElementById("correodrop");
+    var drop1 = drop.outerHTML;
+    var drop2 = drop1.substring("49")
+    var drop3 = drop2.substring("13", drop2.indexOf(','));
+
+
+    var codigo = formaDrop['codigo'].value
+
+    var arr, arr2, arr3;
+
+    arreglos = [];
+    db.collection('reuniones').get().then(doc => {
+        doc.docs.forEach(doc => {
+            //console.log(doc.id);
+            if (doc.data().codigo == codigo) {
+                data = {
+                    "email": doc.data().email,
+                };
+                arreglos.push(data);
+                arr = JSON.stringify(arreglos);
+                //console.log(arr)       
+                arr2 = arr.substring("11")
+                arr3 = arr2.substring("0", arr2.indexOf('"'))
+            }
+        })
+
+
+        console.log(arr3)
+        if (user.email == arr3) {
+            // User is signed in.
+
+            if (codigo != null) {
+
+                var dele = db.collection("reuniones").where("codigo", "==", codigo);
+
+                if (codigo != dele) {
+                    console.log(" 1 ");
+                    dele.get().then(function (querySnapshot) {
+                        console.log(" 2 ");
+                        querySnapshot.forEach(function (doc) {
+                            console.log(" 3 ");
+                            doc.ref.delete();
+                        });
+                    });
+
+                    $('#dropreunionmodal').modal('hide');
+                    formaDrop.reset();
+                    formaDrop.querySelector('.error').innerHTML = '';
+                    alert("Reunion eliminada con exito");
+
+                } else {
+
+                }
+            } else {
+
+            }
+        } else {
+            alert("Tienes que ser el creador de esta reunion para poder eliminarla");
+        }
+    })
+})
+
+
+
+const formaEnter = document.getElementById('formaEnter');
+
+formaEnter.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    var leadsRef = database.ref('leads');
+    leadsRef.on('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var childData = childSnapshot.val();
+        });
     });
-}*/
+
+});

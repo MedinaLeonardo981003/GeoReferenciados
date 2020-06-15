@@ -7,11 +7,11 @@ class Registro {
     };
 
     borrar(id){                
-        db.collection("productos").doc(id).delete();
+        db.collection("reuniones").doc(id).delete();
     };
 
     agregar(){
-        db.collection('productos').add({
+        db.collection('reuniones').add({
             nombre: this.nombre,
             codigo: this.codigo
         });
@@ -24,10 +24,17 @@ class Registro {
     };
 
     actualizar(){    
-        db.collection('productos').doc(this.id).update({
+        db.collection('reuniones').doc(this.id).update({
             nombre: this.nombre,
             codigo: this.codigo
         });
     };
 
 };
+
+
+
+
+
+
+

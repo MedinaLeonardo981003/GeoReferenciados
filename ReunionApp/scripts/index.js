@@ -4,6 +4,9 @@
  const account = document.getElementById('raccount');
  const mapinfo = document.getElementById('map');
  const reunionesdelacuenta = document.querySelector('.reunionesdelacuenta');
+ const correodrop = document.getElementById('correodrop');
+ const correodrop2 = document.getElementById('correodrop2');
+
 
  const configuraMenu = (user) => {
    if (user) {
@@ -17,7 +20,10 @@
         `;
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
+       correodrop.innerHTML = html1;
+       correodrop2.innerHTML = html1;
      });
+
      arreglo = [];
      var emialuser = user.email;
      var count = 0;
@@ -28,18 +34,19 @@
            data = {
              "ID": doc.id,
              "email": doc.data().email,
-             "nombre": doc.data().nombre
+             "nombre": doc.data().nombre,
+             "codigo": doc.data().codigo
            };
            arreglo.push(data);
 
-           for (i = 0; i < arreglo.length; i++) {
+           while (count < arreglo.length) {
              var nodo = document.createElement("p");
 
-             nodo.innerHTML = " Id: " + arreglo[i].ID + "  Reunion: " + arreglo[i].nombre + "." + "."
-             console.log("este es el contador de g  " + i);
+             nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre +  " | Codigo: " + arreglo[count].codigo + " |";
              document.getElementById("childpid").appendChild(nodo);
+             count = count + 1;
            }
-           console.log("se salio  " +  i);
+           console.log("se salio  " + count);
          } else {
            //console.log("No entro if")
          }
@@ -112,16 +119,6 @@
 
        var coordenadas = lat + ',' + lng;
 
-       /*var velocidad = position.coords.speed ? position.coords.speed : 'no disponible';
-       var fechayhora = (new Date(position.timestamp)).toString();
-
-
-       const html2 = `
-                  <p>Velocidad: ${ velocidad }</p>
-                  <p>Fecha y hora: ${ fechayhora }</p>
-              `;
-
-       mapinfo.innerHTML = html2;*/
 
        marker.setPosition(new google.maps.LatLng(lat, lng));
        map.panTo(new google.maps.LatLng(lat, lng));
