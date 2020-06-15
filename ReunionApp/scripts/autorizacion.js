@@ -276,9 +276,6 @@ formaDrop.addEventListener('submit', (e) => {
                     formaDrop.querySelector('.error').innerHTML = '';
                     alert("Reunion eliminada con exito");
 
-                    formaAct2.innerHTML = '';
-                    configuraMenu(user);
-
                 } else {
 
                 }
@@ -289,6 +286,9 @@ formaDrop.addEventListener('submit', (e) => {
             alert("Tienes que ser el creador de esta reunion para poder eliminarla");
         }
     })
+
+    formaAct2.innerHTML = '';
+    configuraMenu(user);
 })
 
 
