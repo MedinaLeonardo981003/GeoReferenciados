@@ -25,12 +25,14 @@
      });
    
      arreglo = [];
+     arreglo = JSON.stringify(arreglo);
      console.log(arreglo + ' []')
      arreglo.length = 0;
+     arreglo = JSON.stringify(arreglo);
      console.log(arreglo + ' length')
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio5");
+     console.log( "Cambio6");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log( "Mi id:  " + doc.id);
