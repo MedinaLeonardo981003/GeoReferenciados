@@ -24,10 +24,11 @@
        correoenter.innerHTML = html1;
      });
 
+     arreglo.length = 0;
      arreglo = [];
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio1");
+     console.log( "Cambio2");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log( "Mi id:  " + doc.id);
@@ -54,10 +55,10 @@
        //console.warn(arreglo);
      })
 
+
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
-     arreglo.pop = [];
    } else {
      datosdelacuenta.innerHTML = '';
      mapinfo.innerHTML = "";
