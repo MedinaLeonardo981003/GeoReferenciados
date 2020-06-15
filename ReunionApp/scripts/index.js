@@ -23,9 +23,9 @@
        correodrop.innerHTML = html1;
        correoenter.innerHTML = html1;
      });
-
-     arreglo.length = 0;
+   
      arreglo = [];
+     arreglo.length = 0;
      var emialuser = user.email;
      var count = 0;
      console.log( "Cambio2");
