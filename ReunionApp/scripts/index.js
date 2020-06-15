@@ -29,7 +29,7 @@
      var count = 0;
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
-         console.log(doc.id);
+         console.log( "Mi id:  " + doc.id);
          if (doc.data().email == emialuser) {
            data = {
              "ID": doc.id,
