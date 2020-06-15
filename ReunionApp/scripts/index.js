@@ -28,7 +28,7 @@
 
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio2");
+     console.log("Cambio1");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log("Mi id:  " + doc.id);
@@ -64,9 +64,6 @@
      listaloggedin.forEach(item => item.style.display = 'none');
      listaloggedout.forEach(item => item.style.display = 'block');
    }
-   arreglo.length = 0;
-   arreglo = JSON.stringify(arreglo);
-   console.log(arreglo + ' length')
  }
 
 
