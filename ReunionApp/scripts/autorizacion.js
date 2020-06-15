@@ -275,6 +275,9 @@ formaDrop.addEventListener('submit', (e) => {
                     formaDrop.querySelector('.error').innerHTML = '';
                     alert("Reunion eliminada con exito");
 
+                    formaAct.innerHTML = '';
+                    configuraMenu(user);
+
                 } else {
 
                 }
