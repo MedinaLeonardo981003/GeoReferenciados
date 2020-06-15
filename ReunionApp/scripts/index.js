@@ -25,9 +25,12 @@
      });
    
      arreglo = [];
+     console.log(arreglo + ' []')
+     arreglo.length = 0;
+     console.log(arreglo + ' length')
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio4");
+     console.log( "Cambio5");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          console.log( "Mi id:  " + doc.id);
@@ -55,7 +58,7 @@
      })
 
 
-     console.log(arreglo + 'arr')
+     
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
