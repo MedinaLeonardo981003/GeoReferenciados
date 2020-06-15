@@ -56,7 +56,7 @@
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
-     arreglo = [];
+     arreglo.pop = [];
    } else {
      datosdelacuenta.innerHTML = '';
      mapinfo.innerHTML = "";
