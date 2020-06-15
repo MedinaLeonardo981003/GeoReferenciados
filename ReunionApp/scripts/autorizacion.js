@@ -135,7 +135,7 @@ const formaAdd = document.getElementById('formaAdd');
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
 
-
+    var user = firebase.auth().currentUser;
     var emails1 = document.getElementById("raccount");
     var emails2 = emails1.outerHTML;
     var emails3 = emails2.substring("17")
@@ -170,19 +170,12 @@ formaAdd.addEventListener('submit', (e) => {
             latitud: lat5,
             longitud: long5,
             codigo: result
-
         });
 
-        auth.onAuthStateChanged(user => {
 
-            if (user) {
-                console.log('Usuario  reunion add');
-                configuraMenu(user);
-            } else {
-                console.log('Usuario  reunion no add );');
-                configuraMenu();
-            }
-        });
+        configuraMenu(user);
+
+
 
 
         $('#addreunionmodal').modal('hide');
