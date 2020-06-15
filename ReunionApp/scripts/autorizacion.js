@@ -172,7 +172,7 @@ formaAdd.addEventListener('submit', (e) => {
             codigo: result
         });
 
-        configuraMenu();
+        configuraMenu(user);
 
         $('#addreunionmodal').modal('hide');
         formaAdd.reset();
