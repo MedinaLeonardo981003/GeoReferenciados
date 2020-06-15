@@ -179,9 +179,7 @@ formaAdd.addEventListener('submit', (e) => {
         formaAdd.querySelector('.error').innerHTML = '';
         alert("Reunion creada con exito");
 
-        $('#micuentaReuniones').modal('hide');
-        formaAct.reset();
-        formaAct.querySelector('.error').innerHTML = '';;
+        formaAct.innerHTML = '';
     })
 })
 
