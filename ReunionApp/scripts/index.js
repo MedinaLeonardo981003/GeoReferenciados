@@ -23,17 +23,16 @@
        correodrop.innerHTML = html1;
        correoenter.innerHTML = html1;
      });
-   
+
      arreglo = [];
      arreglo = JSON.stringify(arreglo);
      console.log(arreglo + ' []')
-     console.log(arreglo + ' length')
      var emialuser = user.email;
      var count = 0;
-     console.log( "Cambio5");
+     console.log("Cambio5");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
-         console.log( "Mi id:  " + doc.id);
+         console.log("Mi id:  " + doc.id);
          if (doc.data().email == emialuser) {
            data = {
              "ID": doc.id,
@@ -45,7 +44,7 @@
            while (count < arreglo.length) {
              var nodo = document.createElement("p");
 
-             nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre +  " | Codigo: " + arreglo[count].codigo + " |";
+             nodo.innerHTML = "Nombre de la reunion: " + arreglo[count].nombre + " | Codigo: " + arreglo[count].codigo + " |";
              document.getElementById("childpid").appendChild(nodo);
              count = count + 1;
            }
@@ -57,9 +56,6 @@
        //console.warn(arreglo);
      })
 
-     arreglo.length = 0;
-     arreglo = JSON.stringify(arreglo);
-     
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
@@ -69,6 +65,9 @@
      listaloggedin.forEach(item => item.style.display = 'none');
      listaloggedout.forEach(item => item.style.display = 'block');
    }
+   arreglo.length = 0;
+   arreglo = JSON.stringify(arreglo);
+   console.log(arreglo + ' length')
  }
 
 
