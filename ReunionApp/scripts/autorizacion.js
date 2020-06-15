@@ -219,6 +219,7 @@ function iniciaMapasss() {
 
 
 const formaDrop = document.getElementById('formaDrop');
+const formaAct2 = document.getElementById("childpid");
 
 formaDrop.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -275,7 +276,7 @@ formaDrop.addEventListener('submit', (e) => {
                     formaDrop.querySelector('.error').innerHTML = '';
                     alert("Reunion eliminada con exito");
 
-                    formaAct.innerHTML = '';
+                    formaAct2.innerHTML = '';
                     configuraMenu(user);
 
                 } else {
