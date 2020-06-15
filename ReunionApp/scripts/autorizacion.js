@@ -160,7 +160,6 @@ formaAdd.addEventListener('submit', (e) => {
     for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-    console.log("resultado   " + result);
 
 
     addEventListener('submit', (e) => {
@@ -172,6 +171,17 @@ formaAdd.addEventListener('submit', (e) => {
             longitud: long5,
             codigo: result
 
+        });
+
+        auth.onAuthStateChanged(user => {
+
+            if (user) {
+                console.log('Usuario  reunion add');
+                configuraMenu(user);
+            } else {
+                console.log('Usuario  reunion no add );');
+                configuraMenu();
+            }
         });
 
 
