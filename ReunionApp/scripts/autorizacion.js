@@ -173,7 +173,6 @@ formaAdd.addEventListener('submit', (e) => {
         });
 
 
-        configuraMenu(user);
 
 
 
