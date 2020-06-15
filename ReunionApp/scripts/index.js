@@ -25,7 +25,6 @@
      });
    
      arreglo = [];
-     arreglo.length = 0;
      var emialuser = user.email;
      var count = 0;
      console.log( "Cambio2");
@@ -55,7 +54,8 @@
        //console.warn(arreglo);
      })
 
-
+     arreglo.splice(0,arreglo.length)
+     console.log(arreglo + 'arr splice')
      iniciaMapa();
      listaloggedin.forEach(item => item.style.display = 'block');
      listaloggedout.forEach(item => item.style.display = 'none');
