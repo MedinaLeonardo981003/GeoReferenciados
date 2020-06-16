@@ -427,6 +427,8 @@ formaEnter.addEventListener('submit', (e) => {
 
                 directionsService.route(request, function(result,status){
                     console.log(result, status);
+
+                    directionsDisplay.setDirections(result);
                 })
 
                 
