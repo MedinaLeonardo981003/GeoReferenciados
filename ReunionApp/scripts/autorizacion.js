@@ -329,24 +329,90 @@ formaEnter.addEventListener('submit', (e) => {
                 var array4 = parseFloat(array2[0].longitud);
                 console.log("array4 " + array4)
 
+
+
+
+                mapa.innerHTML = '';
+
+
+
+
+                var propiedades = {
+                    center: {
+                        lat: 21.152639,
+                        lng: -101.711598
+                    },
+                    zoom: 12
+
+                };
+
+                var mapa = document.getElementById("map");
+
+                var map = new google.maps.Map(mapa, propiedades);
+
                 var icono = {
                     url: "./img/gps.png",
                     scaledSize: new google.maps.Size(25, 25),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(0, 0)
-                  };
-    
+                };
+
                 var marker = new google.maps.Marker({
                     position: {
-                        lat: array3,
-                        lng: array4
+                        lat: 0,
+                        lng: 0
                     },
                     icon: icono,
                     map: map
                 });
-                marker.setMap(mapita);
 
-                
+                var watchId = null;
+
+
+                var positionOptions = {
+                    enableHighAccuracy: true,
+                    timeout: 10 * 1000, //10 segundos
+                    maximumAge: 30 * 1000 //30 segundos
+                };
+
+
+                if (navigator.geolocation) {
+
+                    watchId = navigator.geolocation.watchPosition(function (position) {
+                        var lat = position.coords.latitude;
+                        var lng = position.coords.longitude;
+
+                        console.log(position);
+
+                        var coordenadas = lat + ',' + lng;
+
+
+                        marker.setPosition(new google.maps.LatLng(lat, lng));
+                        map.panTo(new google.maps.LatLng(lat, lng));
+
+                    }, error, positionOptions);
+                }
+
+
+                function error(positioError) {
+                    console.log(positioError.messsage);
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 $('#enterreunionmodal').modal('hide');
                 formaEnter.reset();
                 formaEnter.querySelector('.error').innerHTML = '';
@@ -354,7 +420,7 @@ formaEnter.addEventListener('submit', (e) => {
             });
 
 
-            
+
 
 
 
