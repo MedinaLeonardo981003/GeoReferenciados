@@ -391,6 +391,8 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
+                const latii;
+                const longii;
 
                 if (navigator.geolocation) {
 
@@ -405,6 +407,11 @@ formaEnter.addEventListener('submit', (e) => {
 
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng));
+
+                        latti = lat;
+                        console.log('latii ' + latii)
+                        longii = lng;
+                        console.log('longii ' + longii)
 
                     }, error, positionOptions);
                 
@@ -421,9 +428,17 @@ formaEnter.addEventListener('submit', (e) => {
 
                 var start = (position.coords.latitude,position.coords.longitude);
                 var end = (array3,array4)
+                 // Haight.
+                  
                 var request = {
-                    origin: start,
-                    destination: end,
+                    origin: {
+                        lat: latti,
+                        lng: longii
+                      },
+                      destination: {
+                        lat: array3,
+                        lng: arrray4
+                      },
                     travelMode: 'DRIVING'
                 };
                 directionsService.route(request, function (result, status) {
