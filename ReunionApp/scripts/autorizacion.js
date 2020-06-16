@@ -300,6 +300,7 @@ var mapita = document.getElementById("map");
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    var mapa = document.getElementById("map");
     var user = firebase.auth().currentUser;
     array1 = [];
     array2 = [];
@@ -346,7 +347,7 @@ formaEnter.addEventListener('submit', (e) => {
 
                 };
 
-                var mapa = document.getElementById("map");
+                
 
                 var map = new google.maps.Map(mapa, propiedades);
 
