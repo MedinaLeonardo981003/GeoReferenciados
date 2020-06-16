@@ -391,8 +391,8 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
-                const latii;
-                const longii;
+                const latii  = 0;
+                const longii = 0;
 
                 if (navigator.geolocation) {
 
