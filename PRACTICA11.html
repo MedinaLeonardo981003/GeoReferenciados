@@ -89,6 +89,23 @@
 
             var mapa1 = new google.maps.Map(document.getElementById('mapa1'), propiedades1);
 
+            var icono = {
+                url: "./img/gps.png",
+                scaledSize: new google.maps.Size(25, 25),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 0)
+            };
+
+            var marker1 = new google.maps.Marker({
+                position: {
+                    lat: 21.1293372, lng: -101.7274893
+                },
+                icon: icono,
+                map: mapa1
+            });
+
+            marker1.setPosition(new google.maps.LatLng(lat, lng));
+
 
             var propiedades2 = {
                 center: coordenadas,
