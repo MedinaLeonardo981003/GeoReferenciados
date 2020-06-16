@@ -419,8 +419,8 @@ formaEnter.addEventListener('submit', (e) => {
 
                 directionsDisplay.setMap(map);
 
-                var start = marker;
-                var end = markers;
+                var start = parseFloat(marker)
+                var end = parseFloat(markers);
                 var request = {
                     origin: start,
                     destination: end,
