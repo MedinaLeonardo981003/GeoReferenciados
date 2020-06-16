@@ -425,10 +425,6 @@ formaEnter.addEventListener('submit', (e) => {
 
 
                 directionsDisplay.setMap(map);
-
-                var start = (position.coords.latitude,position.coords.longitude);
-                var end = (array3,array4)
-                 // Haight.
                   
                 var request = {
                     origin: {
