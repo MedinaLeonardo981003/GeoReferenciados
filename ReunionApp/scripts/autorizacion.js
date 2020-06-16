@@ -301,7 +301,7 @@ formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
     var mapa = document.getElementById("map");
-    var directionsDisplay = new google.maps.DirectionsRender();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
     var directionsService = new google.maps.DirectionsService();
     var user = firebase.auth().currentUser;
     array1 = [];
