@@ -349,7 +349,7 @@ formaEnter.addEventListener('submit', (e) => {
 
                 };
 
-                
+
 
                 var map = new google.maps.Map(mapa, propiedades);
 
@@ -375,12 +375,12 @@ formaEnter.addEventListener('submit', (e) => {
 
                 var marker = new google.maps.Marker({
                     position: {
-                      lat: 0,
-                      lng: 0
+                        lat: 0,
+                        lng: 0
                     },
                     icon: icono,
                     map: map
-                  });
+                });
 
                 var watchId = null;
 
@@ -419,19 +419,23 @@ formaEnter.addEventListener('submit', (e) => {
 
                 directionsDisplay.setMap(map);
 
+                var start = marker;
+                var end = markers;
                 var request = {
-                    origin: marker,
-                    destination: markers,
+                    origin: start,
+                    destination: end,
                     travelMode: 'DRIVING'
                 };
+                directionsService.route(request, function (result, status) {
+                    console.log(status + " status")
+                    if (status == 'OK') {
+                        directionsRenderer.setDirections(result);
+                        
+                    }
+                });
 
-                directionsService.route(request, function(result,status){
-                    console.log(result, status);
 
-                    directionsDisplay.setDirections(result);
-                })
 
-                
 
 
                 $('#enterreunionmodal').modal('hide');
