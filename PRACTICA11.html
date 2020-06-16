@@ -23,7 +23,8 @@
         #mapa3,
         #mapa4,
         #mapa5,
-        #mapa6 {
+        #mapa6
+            {
             width: 100%;
             height: 340px;
         }
@@ -67,10 +68,6 @@
                 <div id="mapa6"></div>
                 <p>Mapa con Restricting MapBounds</p>
             </div>
-            <div class="col-12 col-md-6">
-                <div id="mapa7"></div>
-                <p>Mapa con Dragabble</p>
-            </div>
         </div>
     </div>
 
@@ -89,24 +86,7 @@
 
             var mapa1 = new google.maps.Map(document.getElementById('mapa1'), propiedades1);
 
-            var icono = {
-                url: "./img/gps.png",
-                scaledSize: new google.maps.Size(25, 25),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0)
-            };
 
-            var marker1 = new google.maps.Marker({
-                position: {
-                    lat: 21.1293372, 
-                    lng: -101.7274893
-                },
-                icon: icono,
-                map: mapa1
-            });
-
-            marker1.setPosition(new google.maps.LatLng(21.1293372, -101.7274893));
-            mapa1.panTo(new google.maps.LatLng(21.1293372, -101.7274893));
 
             var propiedades2 = {
                 center: coordenadas,
@@ -178,16 +158,6 @@
                 }
             };
             var mapa6 = new google.maps.Map(document.getElementById('mapa6'), propiedades6);
-
-
-
-            var propiedades7 = {
-                center: coordenadas,
-                zoom: 12,
-                disableDefaultUI: true,
-                draggable: true
-            };
-            var mapa7 = new google.maps.Map(document.getElementById('mapa7'), propiedades7);
 
         }
 
