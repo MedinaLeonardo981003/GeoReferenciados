@@ -408,9 +408,9 @@ formaEnter.addEventListener('submit', (e) => {
                         map.panTo(new google.maps.LatLng(lat, lng));
 
                         var latti = position.coords.latitude;
-                        console.log('latii ' + latii)
+                        console.log("latii" + latii);
                         var longii = lng;
-                        console.log('longii ' + longii)
+                        console.log('longii ' + longii);
 
 
                         directionsDisplay.setMap(map);
