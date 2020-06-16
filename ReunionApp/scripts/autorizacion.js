@@ -357,14 +357,17 @@ formaEnter.addEventListener('submit', (e) => {
                     anchor: new google.maps.Point(0, 0)
                 };
 
-                var marker = new google.maps.Marker({
+                var markers = new google.maps.Marker({
                     position: {
-                        lat: 0,
-                        lng: 0
+                        lat: array3,
+                        lng: array4
                     },
                     icon: icono,
                     map: map
                 });
+
+                markers.setPosition(new google.maps.LatLng(lat, lng));
+                map.panTo(new google.maps.LatLng(lat, lng));
 
                 var watchId = null;
 
