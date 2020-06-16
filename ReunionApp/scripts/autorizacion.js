@@ -367,8 +367,7 @@ formaEnter.addEventListener('submit', (e) => {
                     map: map
                 });
 
-                markers.setPosition(new google.maps.LatLng(lat, lng));
-                map.panTo(new google.maps.LatLng(lat, lng));
+                markers.setMap(map);
 
 
 
@@ -418,29 +417,11 @@ formaEnter.addEventListener('submit', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
                 $('#enterreunionmodal').modal('hide');
                 formaEnter.reset();
                 formaEnter.querySelector('.error').innerHTML = '';
                 alert("Entraste con exito a la reunion");
             });
-
-
-
-
-
-
-
-
         } else {
 
         }
