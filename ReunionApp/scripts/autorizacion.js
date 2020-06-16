@@ -323,12 +323,11 @@ formaEnter.addEventListener('submit', (e) => {
 
 
 
-                var array3 = JSON.stringify(array1[0].latitud);
+                var array3 = parseFloat(array1[0].latitud);
                 console.log("array3 " + array3)
 
-                var array4 = JSON.stringify(array2[0].longitud);
+                var array4 = parseFloat(array2[0].longitud);
                 console.log("array4 " + array4)
-
 
                 var icono = {
                     url: "./img/gps.png",
@@ -336,7 +335,7 @@ formaEnter.addEventListener('submit', (e) => {
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(0, 0)
                   };
-
+    
                 var marker = new google.maps.Marker({
                     position: {
                         lat: array3,
@@ -347,6 +346,7 @@ formaEnter.addEventListener('submit', (e) => {
                 });
                 marker.setMap(mapita);
 
+                
                 $('#enterreunionmodal').modal('hide');
                 formaEnter.reset();
                 formaEnter.querySelector('.error').innerHTML = '';
@@ -354,6 +354,7 @@ formaEnter.addEventListener('submit', (e) => {
             });
 
 
+            
 
 
 
