@@ -367,7 +367,7 @@ formaEnter.addEventListener('submit', (e) => {
                     map: map
                 });
 
-                markers.setMap(map);
+                markers.setPosition(new google.maps.LatLng(array3, array4));
 
 
 
