@@ -301,6 +301,8 @@ formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
     var mapa = document.getElementById("map");
+    var directionsDisplay = new google.maps.DirectionsRender();
+    var directionsService = new google.maps.DirectionsService();
     var user = firebase.auth().currentUser;
     array1 = [];
     array2 = [];
@@ -415,6 +417,19 @@ formaEnter.addEventListener('submit', (e) => {
 
 
 
+                directionsDisplay.setMap(map);
+
+                var request = {
+                    origin: marker,
+                    destination: markers,
+                    travelMode: 'DRIVING'
+                };
+
+                directionsService.route(request, function(result,status){
+                    console.log(result, status);
+                })
+
+                
 
 
                 $('#enterreunionmodal').modal('hide');
