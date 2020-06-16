@@ -31,7 +31,7 @@
      console.log("Cambio2");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
-         console.log("Mi id:  " + doc.id);
+         //console.log("Mi id:  " + doc.id);
          if (doc.data().email == emialuser) {
            data = {
              "ID": doc.id,

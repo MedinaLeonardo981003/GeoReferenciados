@@ -1,17 +1,17 @@
 auth.onAuthStateChanged(user => {
 
     if (user) {
-        console.log('Usuario entró');
+        //console.log('Usuario entró');
         configuraMenu(user);
         var name, email;
 
         name = user.displayName;
         email = user.email;
 
-        console.log(name, email);
+        //console.log(name, email);
 
     } else {
-        console.log('Usuario salió');
+        //console.log('Usuario salió');
         configuraMenu();
     }
 });
@@ -276,6 +276,8 @@ formaDrop.addEventListener('submit', (e) => {
                     formaDrop.querySelector('.error').innerHTML = '';
                     alert("Reunion eliminada con exito");
 
+                    formaAct2.innerHTML = '';
+                    configuraMenu(user);
                 } else {
 
                 }
@@ -286,23 +288,84 @@ formaDrop.addEventListener('submit', (e) => {
             alert("Tienes que ser el creador de esta reunion para poder eliminarla");
         }
     })
-
-    formaAct2.innerHTML = '';
-    configuraMenu(user);
 })
 
 
 
 const formaEnter = document.getElementById('formaEnter');
+const latit = document.getElementById('lati');
+const longit = document.getElementById('longi');
+var mapita = document.getElementById("map");
 
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    var leadsRef = database.ref('leads');
-    leadsRef.on('value', function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            var childData = childSnapshot.val();
-        });
-    });
+    var user = firebase.auth().currentUser;
+    array1 = [];
+    array2 = [];
 
-});
+
+    var codigos = formaEnter['codigo'].value
+    if (codigo != null) {
+        var code = db.collection("reuniones").where("codigo", "==", codigos);
+        if (codigos != code) {
+            code.get().then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    data1 = {
+                        "latitud": doc.data().latitud,
+                    };
+                    data2 = {
+                        "longitud": doc.data().longitud,
+                    };
+                });
+                array1.push(data1);
+                array2.push(data2);
+
+
+
+                var array3 = JSON.stringify(array1[0].latitud);
+                console.log("array3 " + array3)
+
+                var array4 = JSON.stringify(array2[0].longitud);
+                console.log("array4 " + array4)
+
+
+                var icono = {
+                    url: "./img/gps.png",
+                    scaledSize: new google.maps.Size(25, 25),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                  };
+
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: array3,
+                        lng: array4
+                    },
+                    icon: icono,
+                    map: map
+                });
+                marker.setMap(mapita);
+
+                $('#enterreunionmodal').modal('hide');
+                formaEnter.reset();
+                formaEnter.querySelector('.error').innerHTML = '';
+                alert("Entraste con exito a la reunion");
+            });
+
+
+
+
+
+
+
+        } else {
+
+        }
+    } else {
+
+    }
+
+
+
+})
