@@ -369,6 +369,17 @@ formaEnter.addEventListener('submit', (e) => {
                 markers.setPosition(new google.maps.LatLng(lat, lng));
                 map.panTo(new google.maps.LatLng(lat, lng));
 
+
+
+                var marker = new google.maps.Marker({
+                    position: {
+                      lat: 0,
+                      lng: 0
+                    },
+                    icon: icono,
+                    map: map
+                  });
+
                 var watchId = null;
 
 
