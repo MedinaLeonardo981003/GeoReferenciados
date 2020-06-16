@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Place Autocomplete Address Form</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        #map {
+            width: 100%;
+            height: 350px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                Buscar: <input id="autocomplete" class="form-control" placeholder="Ingresa tu domicilio"
+                    onFocus="geolocate()" type="text" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-light rounded shadow my-3 p-3">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                Calle: <input id="route" class="form-control" />
+            </div>
+            <div class="col-12 col-md-6">
+                No: <input id="street_number" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                Ciudad: <input id="locality" class="form-control" />
+            </div>
+            <div class="col-12 col-md-6">
+                Estado: <input id="administrative_area_level_1" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                CP: <input id="postal_code" class="form-control" />
+            </div>
+            <div class="col-12 col-md-6">
+                Páis: <input id="country" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        var placeSearch, autocomplete;
+
+        var componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            administrative_area_level_1: 'short_name',
+            country: 'long_name',
+            postal_code: 'short_name'
+        };
+
+        var coordenadas = { lat: 21.152639, lng: -101.711598 };
+
+        var propiedades = {
+            center: coordenadas,
+            zoom: 12
+        };
+
+        function initAutocomplete() {
+
+
+            map = new google.maps.Map(document.getElementById('map'), propiedades);
+
+            var autocompletado = document.getElementById('autocomplete');
+            autocomplete = new google.maps.places.Autocomplete(autocompletado, { types: ['geocode'] });
+            autocomplete.setFields(['address_component', 'geometry']);
+            autocomplete.addListener('place_changed', obtieneDatos);
+
+        }
+
+        function obtieneDatos() {
+
+            var place = autocomplete.getPlace();
+            console.log(place);
+
+            var marker = new google.maps.Marker({
+                position: place.geometry.location,
+                map: map
+            });
+
+            map.panTo(place.geometry.location);
+            map.setZoom(18);
+            map.setCenter(place.geometry.location);
+
+            for (var i = 0; i < place.address_components.length; i++) {
+
+                var addressType = place.address_components[i].types[0];
+
+                console.log(addressType);
+
+                if (componentForm[addressType]) {
+                    var val = place.address_components[i]['long_name'];
+                    document.getElementById(addressType).value = val;
+                }
+            }
+        }
+
+
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+
+                    var circle = new google.maps.Circle(
+                        { center: geolocation, radius: position.coords.accuracy });
+
+                    //console.log(circle.getBounds());
+
+                    autocomplete.setBounds(circle.getBounds());
+
+                });
+            }
+        }
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+</body>
+
+</html>
