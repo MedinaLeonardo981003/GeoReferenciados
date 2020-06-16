@@ -391,8 +391,7 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
-                const latii  = '';
-                const longii = '';
+                
 
                 if (navigator.geolocation) {
 
@@ -408,9 +407,9 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng));
 
-                        latti = lat;
+                        var latti = lat;
                         console.log('latii ' + latii)
-                        longii = lng;
+                        var longii = lng;
                         console.log('longii ' + longii)
 
 
