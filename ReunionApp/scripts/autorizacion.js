@@ -391,8 +391,8 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
-                const latii  = 0;
-                const longii = 0;
+                const latii  = '';
+                const longii = '';
 
                 if (navigator.geolocation) {
 
@@ -413,18 +413,8 @@ formaEnter.addEventListener('submit', (e) => {
                         longii = lng;
                         console.log('longii ' + longii)
 
-                    }, error, positionOptions);
-                
 
-
-                function error(positioError) {
-                    console.log(positioError.messsage);
-                }
-
-
-
-
-                directionsDisplay.setMap(map);
+                        directionsDisplay.setMap(map);
                   
                 var request = {
                     origin: {
@@ -444,6 +434,14 @@ formaEnter.addEventListener('submit', (e) => {
                         
                     }
                 });
+
+                    }, error, positionOptions);
+                
+
+
+                function error(positioError) {
+                    console.log(positioError.messsage);
+                }
 
 
             }
