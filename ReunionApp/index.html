@@ -375,69 +375,6 @@
   <script src="scripts/micuenta.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa"
     async defer></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&libraries=places&callback=initAutocomplete"
-    async defer></script>
-
-  <script>
-    var placeSearch, autocomplete;
-
-
-var coordenadas = { lat: 21.152639, lng: -101.711598 };
-
-var propiedades = {
-    center: coordenadas,
-    zoom: 12
-};
-
-function initAutocomplete() {
-
-
-    map = new google.maps.Map(document.getElementById('map'), propiedades);
-
-    var autocompletado = document.getElementById('autocomplete');
-    autocomplete = new google.maps.places.Autocomplete(autocompletado, { types: ['geocode'] });
-    autocomplete.setFields(['address_component', 'geometry']);
-    autocomplete.addListener('place_changed', obtieneDatos);
-
-}
-
-function obtieneDatos() {
-
-    var place = autocomplete.getPlace();
-    console.log(place);
-
-    var marker = new google.maps.Marker({
-        position: place.geometry.location,
-        map: map
-    });
-
-    map.panTo(place.geometry.location);
-    map.setZoom(18);
-    map.setCenter(place.geometry.location);
-
-    }
-
-    function geolocate() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var geolocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-
-          var circle = new google.maps.Circle(
-            { center: geolocation, radius: position.coords.accuracy });
-
-          //console.log(circle.getBounds());
-
-          autocomplete.setBounds(circle.getBounds());
-
-        });
-      }
-    }
-  </script>
 
 </body>
 

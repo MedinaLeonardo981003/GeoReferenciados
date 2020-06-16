@@ -188,7 +188,7 @@ formaAdd.addEventListener('submit', (e) => {
 const lati = document.getElementById('latitude_view');
 const lngu = document.getElementById('longitude_view');
 
-/*function iniciaMapasss() {
+function iniciaMapasss() {
 
     var map = new google.maps.Map(document.getElementById('mapCanvas'), {
         center: {
@@ -215,7 +215,7 @@ const lngu = document.getElementById('longitude_view');
         console.log(position);
     });
 
-}*/
+}
 
 
 const formaDrop = document.getElementById('formaDrop');
