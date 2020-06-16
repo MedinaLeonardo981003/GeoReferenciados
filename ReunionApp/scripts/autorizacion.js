@@ -407,7 +407,7 @@ formaEnter.addEventListener('submit', (e) => {
                         map.panTo(new google.maps.LatLng(lat, lng));
 
                     }, error, positionOptions);
-                }
+                
 
 
                 function error(positioError) {
@@ -419,8 +419,8 @@ formaEnter.addEventListener('submit', (e) => {
 
                 directionsDisplay.setMap(map);
 
-                var start = parseFloat(marker)
-                var end = parseFloat(markers);
+                var start = (position.coords.latitude,position.coords.longitude);
+                var end = (array3,array4)
                 var request = {
                     origin: start,
                     destination: end,
@@ -435,7 +435,7 @@ formaEnter.addEventListener('submit', (e) => {
                 });
 
 
-
+            }
 
 
                 $('#enterreunionmodal').modal('hide');
