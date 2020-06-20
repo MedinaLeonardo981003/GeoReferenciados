@@ -416,11 +416,11 @@ formaEnter.addEventListener('submit', (e) => {
 
                         $('#enterreunionmodal').modal('hide');
                         formaEnter.reset();
-                        formaEnter.querySelector('.error').innerHTML = '';
+                        formaEnter.querySelector('.error').innerHTML = ''; 
                         alert("Entraste con exito a la reunion");
-                        button.innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
 
                     });
+                    button.innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
                 } else {
 
                 }
