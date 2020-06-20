@@ -1,3 +1,5 @@
+var button = document.getElementById("buttonAppear")
+
 auth.onAuthStateChanged(user => {
 
     if (user) {
@@ -307,7 +309,7 @@ formaEnter.addEventListener('submit', (e) => {
     var user = firebase.auth().currentUser;
     array1 = [];
     array2 = [];
-
+    button.innerHTML = '';
 
     var codigos = formaEnter['codigo'].value
     if (codigo != null) {
@@ -416,7 +418,7 @@ formaEnter.addEventListener('submit', (e) => {
                         formaEnter.reset();
                         formaEnter.querySelector('.error').innerHTML = '';
                         alert("Entraste con exito a la reunion");
-                        document.getElementById("buttonAppear").innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
+                        button.innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
 
                     });
                 } else {
