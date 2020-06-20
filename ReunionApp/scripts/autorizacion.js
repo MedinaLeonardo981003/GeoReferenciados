@@ -278,6 +278,7 @@ formaDrop.addEventListener('submit', (e) => {
 
                     formaAct2.innerHTML = '';
                     configuraMenu(user);
+                    document.getElementById("buttonAppear").innerHTML = '';
                 } else {
 
                 }
@@ -391,7 +392,7 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
-                
+
 
                 if (navigator.geolocation) {
 
@@ -410,42 +411,44 @@ formaEnter.addEventListener('submit', (e) => {
 
 
                         directionsDisplay.setMap(map);
-                  
-                var request = {
-                    origin: {
-                        lat: latti,
-                        lng: longii
-                      },
-                      destination: {
-                        lat: array3,
-                        lng: arrray4
-                      },
-                    travelMode: 'DRIVING'
-                };
-                directionsService.route(request, function (result, status) {
-                    console.log(status + " status")
-                    if (status == 'OK') {
-                        directionsRenderer.setDirections(result);
-                        
-                    }
-                });
+
+                        var request = {
+                            origin: {
+                                lat: latti,
+                                lng: longii
+                            },
+                            destination: {
+                                lat: array3,
+                                lng: arrray4
+                            },
+                            travelMode: 'DRIVING'
+                        };
+                        directionsService.route(request, function (result, status) {
+                            console.log(status + " status")
+                            if (status == 'OK') {
+                                directionsRenderer.setDirections(result);
+
+                            }
+                        });
 
                     }, error, positionOptions);
-                
 
 
-                function error(positioError) {
-                    console.log(positioError.messsage);
+
+                    function error(positioError) {
+                        console.log(positioError.messsage);
+                    }
+
+
                 }
-
-
-            }
 
 
                 $('#enterreunionmodal').modal('hide');
                 formaEnter.reset();
                 formaEnter.querySelector('.error').innerHTML = '';
                 alert("Entraste con exito a la reunion");
+                document.getElementById("buttonAppear").innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
+
             });
         } else {
 

@@ -37,14 +37,20 @@
       background-image: url("img/wall.jpg");
     }
 
+    #salir{
+      position: absolute;
+      right: 0;
+    }
+
     #map {
       max-width: 95%;
-      height: 760px;
-      margin-top: 150px;
+      height: 800px;
+      margin-top: 50px;
       margin-right: auto;
       margin-left: auto;
       margin-bottom: auto;
       align-items: center;
+      position: relative;
     }
 
     #mapCanvas {
@@ -55,7 +61,7 @@
 </head>
 
 <body class="body">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Reunion</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,9 +76,9 @@
           Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#enterreunionmodal">Entrar a
           Reunion</a>
-        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar
-          Reunion</a>
-        <a class="nav-item nav-link logged-in" href="#" id="salir">Salir</a>
+          <span id="buttonAppear">        
+          </span>
+        <a class="nav-item nav-link logged-in btn btn-danger" href="#" id="salir">Salir</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal"
           data-target="#registratemodal">Regístrate</a>
@@ -339,7 +345,7 @@
     </div>
   </div>
 
-
+<!-- Mapa -->
   <div>
     <div id="map">
       <div>
