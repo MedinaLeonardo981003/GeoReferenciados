@@ -1,4 +1,4 @@
-var button = document.getElementById("buttonAppear")
+var button = document.getElementById('buttonAppear');
 
 auth.onAuthStateChanged(user => {
 
@@ -220,78 +220,6 @@ function iniciaMapasss() {
 }
 
 
-const formaDrop = document.getElementById('formaDrop');
-const formaAct2 = document.getElementById("childpid");
-
-formaDrop.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-
-    var user = firebase.auth().currentUser;
-    var drop = document.getElementById("correodrop");
-    var drop1 = drop.outerHTML;
-    var drop2 = drop1.substring("49")
-    var drop3 = drop2.substring("13", drop2.indexOf(','));
-
-
-    var codigo = formaDrop['codigo'].value
-
-    var arr, arr2, arr3;
-
-    arreglos = [];
-    db.collection('reuniones').get().then(doc => {
-        doc.docs.forEach(doc => {
-            //console.log(doc.id);
-            if (doc.data().codigo == codigo) {
-                data = {
-                    "email": doc.data().email,
-                };
-                arreglos.push(data);
-                arr = JSON.stringify(arreglos);
-                //console.log(arr)       
-                arr2 = arr.substring("11")
-                arr3 = arr2.substring("0", arr2.indexOf('"'))
-            }
-        })
-
-
-        console.log(arr3)
-        if (user.email == arr3) {
-            // User is signed in.
-
-            if (codigo != null) {
-
-                var dele = db.collection("reuniones").where("codigo", "==", codigo);
-
-                if (codigo != dele) {
-                    console.log(" 1 ");
-                    dele.get().then(function (querySnapshot) {
-                        console.log(" 2 ");
-                        querySnapshot.forEach(function (doc) {
-                            console.log(" 3 ");
-                            doc.ref.delete();
-                        });
-                    });
-
-                    $('#dropreunionmodal').modal('hide');
-                    formaDrop.reset();
-                    formaDrop.querySelector('.error').innerHTML = '';
-                    alert("Reunion eliminada con exito");
-
-                    formaAct2.innerHTML = '';
-                    configuraMenu(user);
-                    document.getElementById("buttonAppear").innerHTML = '';
-                } else {
-
-                }
-            } else {
-
-            }
-        } else {
-            alert("Tienes que ser el creador de esta reunion para poder eliminarla");
-        }
-    })
-})
 
 
 
@@ -299,19 +227,19 @@ const formaEnter = document.getElementById('formaEnter');
 const latit = document.getElementById('lati');
 const longit = document.getElementById('longi');
 var mapita = document.getElementById("map");
+const codigo = document.getElementById("codigo")
 
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
     var mapa = document.getElementById("map");
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    var directionsService = new google.maps.DirectionsService();
     var user = firebase.auth().currentUser;
     array1 = [];
     array2 = [];
-    button.innerHTML = '';
+
 
     var codigos = formaEnter['codigo'].value
+    button.innerHTML = '';
     if (codigo != null) {
         var code = db.collection("reuniones").where("codigo", "==", codigos);
         if (codigos != code) {
@@ -327,7 +255,7 @@ formaEnter.addEventListener('submit', (e) => {
                 array1.push(data1);
                 array2.push(data2);
 
-
+                mapa.innerHTML = '';
 
                 var array3 = parseFloat(array1[0].latitud);
                 console.log("array3 " + array3)
@@ -335,13 +263,7 @@ formaEnter.addEventListener('submit', (e) => {
                 var array4 = parseFloat(array2[0].longitud);
                 console.log("array4 " + array4)
 
-
-
-
-                mapa.innerHTML = '';
-
-
-
+                
 
                 var propiedades = {
                     center: {
@@ -351,8 +273,6 @@ formaEnter.addEventListener('submit', (e) => {
                     zoom: 12
 
                 };
-
-
 
                 var map = new google.maps.Map(mapa, propiedades);
 
@@ -409,26 +329,92 @@ formaEnter.addEventListener('submit', (e) => {
 
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng));
+                    })
+                }
+
+
+                $('#enterreunionmodal').modal('hide');
+                formaEnter.reset();
+                formaEnter.querySelector('.error').innerHTML = '';
+                alert("Entraste con exito a la reunion");
+                    button.innerHTML = '<a >Borrar Reunion</a>'
+
+            });
+        } else {}
+    } else {}
+})
 
 
 
-                        directionsDisplay.setMap(map);
 
-                        $('#enterreunionmodal').modal('hide');
-                        formaEnter.reset();
-                        formaEnter.querySelector('.error').innerHTML = ''; 
-                        alert("Entraste con exito a la reunion");
+const formaDrop = document.getElementById('formaDrop');
+const formaAct2 = document.getElementById("childpid");
 
+formaDrop.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    var user = firebase.auth().currentUser;
+    var drop = document.getElementById("correodrop");
+    var drop1 = drop.outerHTML;
+    var drop2 = drop1.substring("49")
+    var drop3 = drop2.substring("13", drop2.indexOf(','));
+
+
+    var codigo = formaDrop['codigo'].value
+
+    var arr, arr2, arr3;
+
+    arreglos = [];
+    db.collection('reuniones').get().then(doc => {
+        doc.docs.forEach(doc => {
+            //console.log(doc.id);
+            if (doc.data().codigo == codigo) {
+                data = {
+                    "email": doc.data().email,
+                };
+                arreglos.push(data);
+                arr = JSON.stringify(arreglos);
+                //console.log(arr)       
+                arr2 = arr.substring("11")
+                arr3 = arr2.substring("0", arr2.indexOf('"'))
+            }
+        })
+
+
+        console.log(arr3)
+        if (user.email == arr3) {
+            // User is signed in.
+
+            if (codigo != null) {
+
+                var dele = db.collection("reuniones").where("codigo", "==", codigo);
+
+                if (codigo != dele) {
+                    console.log(" 1 ");
+                    dele.get().then(function (querySnapshot) {
+                        console.log(" 2 ");
+                        querySnapshot.forEach(function (doc) {
+                            console.log(" 3 ");
+                            doc.ref.delete();
+                        });
                     });
-                    button.innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
+
+                    $('#dropreunionmodal').modal('hide');
+                    formaDrop.reset();
+                    formaDrop.querySelector('.error').innerHTML = '';
+                    alert("Reunion eliminada con exito");
+
+                    formaAct2.innerHTML = '';
+                    button.innerHTML = '';
+                    configuraMenu(user);
                 } else {
 
                 }
-            })
+            } else {
+
+            }
         } else {
-
+            alert("Tienes que ser el creador de esta reunion para poder eliminarla");
         }
-    } else {
-
-    }
+    })
 })
