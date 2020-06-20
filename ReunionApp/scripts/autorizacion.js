@@ -412,51 +412,21 @@ formaEnter.addEventListener('submit', (e) => {
 
                         directionsDisplay.setMap(map);
 
-                        var request = {
-                            origin: {
-                                lat: latti,
-                                lng: longii
-                            },
-                            destination: {
-                                lat: array3,
-                                lng: arrray4
-                            },
-                            travelMode: 'DRIVING'
-                        };
-                        directionsService.route(request, function (result, status) {
-                            console.log(status + " status")
-                            if (status == 'OK') {
-                                directionsRenderer.setDirections(result);
+                        $('#enterreunionmodal').modal('hide');
+                        formaEnter.reset();
+                        formaEnter.querySelector('.error').innerHTML = '';
+                        alert("Entraste con exito a la reunion");
+                        document.getElementById("buttonAppear").innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
 
-                            }
-                        });
-
-                    }, error, positionOptions);
-
-
-
-                    function error(positioError) {
-                        console.log(positioError.messsage);
-                    }
-
+                    });
+                } else {
 
                 }
-
-
-                $('#enterreunionmodal').modal('hide');
-                formaEnter.reset();
-                formaEnter.querySelector('.error').innerHTML = '';
-                alert("Entraste con exito a la reunion");
-                document.getElementById("buttonAppear").innerHTML = '<a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#dropreunionmodal">Borrar Reunion</a>'
-
-            });
+            })
         } else {
 
         }
     } else {
 
     }
-
-
-
 })
