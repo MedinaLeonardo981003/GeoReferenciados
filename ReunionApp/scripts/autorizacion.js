@@ -222,6 +222,7 @@ function iniciaMapasss() {
 
 const formaDrop = document.getElementById('formaDrop');
 const formaAct2 = document.getElementById("childpid");
+var codigos = document.getElementById('reu');
 
 formaDrop.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -233,16 +234,16 @@ formaDrop.addEventListener('submit', (e) => {
     var drop2 = drop1.substring("49")
     var drop3 = drop2.substring("13", drop2.indexOf(','));
 
-
-    var codigo = formaDrop['codigo'].value
+    var codigos1 = codigos.outerHTML;
+    var codigos2 = codigos1.substring("15")
+    var codigos3 = codigos2.substring("0", codigos2.indexOf('<'));
 
     var arr, arr2, arr3;
-
     arreglos = [];
     db.collection('reuniones').get().then(doc => {
         doc.docs.forEach(doc => {
             //console.log(doc.id);
-            if (doc.data().codigo == codigo) {
+            if (doc.data().codigo == codigos3) {
                 data = {
                     "email": doc.data().email,
                 };
@@ -261,14 +262,14 @@ formaDrop.addEventListener('submit', (e) => {
 
             if (codigo != null) {
 
-                var dele = db.collection("reuniones").where("codigo", "==", codigo);
+                var dele = db.collection("reuniones").where("codigo", "==", codigos3);
 
                 if (codigo != dele) {
-                    console.log(" 1 ");
+                    //console.log(" 1 ");
                     dele.get().then(function (querySnapshot) {
-                        console.log(" 2 ");
+                        //console.log(" 2 ");
                         querySnapshot.forEach(function (doc) {
-                            console.log(" 3 ");
+                            //console.log(" 3 ");
                             doc.ref.delete();
                         });
                     });
@@ -277,7 +278,7 @@ formaDrop.addEventListener('submit', (e) => {
                     formaDrop.reset();
                     formaDrop.querySelector('.error').innerHTML = '';
                     alert("Reunion eliminada con exito");
-
+                    buttonAppear.innerHTML = '';
                     formaAct2.innerHTML = '';
                     configuraMenu(user);
                 } else {
@@ -298,8 +299,8 @@ const formaEnter = document.getElementById('formaEnter');
 const latit = document.getElementById('lati');
 const longit = document.getElementById('longi');
 var mapita = document.getElementById("map");
-var codigo = document.getElementById('codigo')
-
+var codigo = document.getElementById('codigo');
+var buttonAppear = document.getElementById('buttonAppear');
 
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -331,10 +332,10 @@ formaEnter.addEventListener('submit', (e) => {
 
 
                 var array3 = parseFloat(array1[0].latitud);
-                console.log("array3 " + array3)
+                //console.log("array3 " + array3)
 
                 var array4 = parseFloat(array2[0].longitud);
-                console.log("array4 " + array4)
+                //console.log("array4 " + array4)
 
 
 
@@ -421,7 +422,7 @@ formaEnter.addEventListener('submit', (e) => {
                 formaEnter.querySelector('.error').innerHTML = '';
                 alert("Entraste con exito a la reunion");
                 reu.innerHTML = values;
-                codigo.innerHTML = '<a>Borrar reunion</a>'
+                buttonAppear.innerHTML = '<a>Borrar reunion</a>'
             });
         } else {
 
