@@ -1,3 +1,5 @@
+const reu = document.getElementById('reu');
+
 auth.onAuthStateChanged(user => {
 
     if (user) {
@@ -296,6 +298,8 @@ const formaEnter = document.getElementById('formaEnter');
 const latit = document.getElementById('lati');
 const longit = document.getElementById('longi');
 var mapita = document.getElementById("map");
+var codigo = document.getElementById('codigo')
+
 
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -391,7 +395,7 @@ formaEnter.addEventListener('submit', (e) => {
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
-                
+
 
                 if (navigator.geolocation) {
 
@@ -407,14 +411,17 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
 
-            })
-        }
+                    })
+                }
 
+                values = codigo.value;
 
                 $('#enterreunionmodal').modal('hide');
                 formaEnter.reset();
                 formaEnter.querySelector('.error').innerHTML = '';
                 alert("Entraste con exito a la reunion");
+                reu.innerHTML = values;
+                codigo.innerHTML = '<a>Borrar reunion</a>'
             });
         } else {
 
