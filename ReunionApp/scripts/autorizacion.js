@@ -19,6 +19,7 @@ auth.onAuthStateChanged(user => {
 });
 
 
+const formaregistrate = document.getElementById('formaregistrate');
 
 
 const formaregistrate = document.getElementById('formaregistrate');
@@ -425,12 +426,9 @@ formaEnter.addEventListener('submit', (e) => {
                 buttonAppear.innerHTML = '<a>Borrar reunion</a>'
             });
         } else {
-
+            //
         }
     } else {
 
     }
-
-
-
-})
+});
