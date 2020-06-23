@@ -28,7 +28,7 @@
 
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio");
+     console.log("Cambio1");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          //console.log("Mi id:  " + doc.id);

@@ -426,7 +426,7 @@ formaEnter.addEventListener('submit', (e) => {
                 buttonAppear.innerHTML = '<a>Borrar reunion</a>'
             });
         } else {
-            //
+            
         }
     } else {
 
