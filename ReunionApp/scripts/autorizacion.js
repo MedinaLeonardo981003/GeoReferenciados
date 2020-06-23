@@ -22,8 +22,6 @@ auth.onAuthStateChanged(user => {
 const formaregistrate = document.getElementById('formaregistrate');
 
 
-const formaregistrate = document.getElementById('formaregistrate');
-
 formaregistrate.addEventListener('submit', (e) => {
     e.preventDefault();
 
