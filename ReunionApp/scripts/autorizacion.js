@@ -450,14 +450,15 @@ formaEnter.addEventListener('submit', (e) => {
                 var drope2 = drope1.substring("36")
                 var drope3 = drope2.substring("1", drope2.indexOf(','));
 
-                console.log('1 ' + viewemails)
-                console.log('2 ' + drope1)
-                console.log('3 ' + drope2)
-                console.log('4 ' + drope3)
+                var emails = JSON.stringify(arrayemail[0]);
+                var emailss = emails.substring("10");
+                var emailsss = emailss.substring("0", emailss.indexOf('"'));
+                console.log(emailsss)
+                console.log(drope3)
 
 
 
-                if (arrayemail[0].correo == drope3) {
+                if (emailsss == drope3) {
                     $('#enterreunionmodal').modal('hide');
                     formaEnter.reset();
                     formaEnter.querySelector('.error').innerHTML = '';
