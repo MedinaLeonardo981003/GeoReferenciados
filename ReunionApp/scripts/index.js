@@ -6,7 +6,7 @@
  const reunionesdelacuenta = document.querySelector('.reunionesdelacuenta');
  const correodrop = document.getElementById('correodrop');
  const correoenter = document.getElementById('correoenter');
-
+ const viewemail = document.getElementById("viewemail");
 
  const configuraMenu = (user) => {
    if (user) {
@@ -22,13 +22,14 @@
        account.innerHTML = html1;
        correodrop.innerHTML = html1;
        correoenter.innerHTML = html1;
+       viewemail.innerHTML = html1;
      });
 
      arreglo = [];
 
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio");
+     console.log("Cambio1");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          //console.log("Mi id:  " + doc.id);

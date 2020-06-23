@@ -7,6 +7,8 @@ auth.onAuthStateChanged(user => {
         configuraMenu(user);
         var name, email;
 
+
+
         name = user.displayName;
         email = user.email;
 
@@ -142,6 +144,8 @@ formaAdd.addEventListener('submit', (e) => {
     var emails2 = emails1.outerHTML;
     var emails3 = emails2.substring("17")
     var emails4 = emails3.substring("16", emails3.indexOf(','));
+    var emailinfo = document.getElementById("emailview");
+    emailinfo.innerHTML = emails4;
 
     var lat1 = document.getElementById("latitude_view");
     var lat2 = lat1.outerHTML;
@@ -300,7 +304,7 @@ const longit = document.getElementById('longi');
 var mapita = document.getElementById("map");
 var codigo = document.getElementById('codigo');
 var buttonAppear = document.getElementById('buttonAppear');
-
+var codigosi = document.getElementById('reu');
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -310,7 +314,27 @@ formaEnter.addEventListener('submit', (e) => {
     var user = firebase.auth().currentUser;
     array1 = [];
     array2 = [];
+    arrayemail = [];
+    var em, em2, em3;
+    var codigos1 = codigosi.outerHTML;
+    var codigos2 = codigos1.substring("15")
+    var codigos3 = codigos2.substring("0", codigos2.indexOf('<'));
 
+    db.collection('reuniones').get().then(doc => {
+        doc.docs.forEach(doc => {
+            //console.log(doc.id);
+            if (doc.data().codigo == codigos3) {
+                data = {
+                    "email": doc.data().email,
+                };
+                arreglos.push(data);
+                arr = JSON.stringify(arreglos);
+                //console.log(arr)       
+                em2 = em.substring("11")
+                em3 = em2.substring("0", em2.indexOf('"'))
+            }
+        })
+    })
 
     var codigos = formaEnter['codigo'].value
     if (codigo != null) {
@@ -324,9 +348,13 @@ formaEnter.addEventListener('submit', (e) => {
                     data2 = {
                         "longitud": doc.data().longitud,
                     };
+                    data3 = {
+                        "email": doc.data().email,
+                    };
                 });
                 array1.push(data1);
                 array2.push(data2);
+                arrayemail.push(data3)
 
 
 
@@ -336,7 +364,7 @@ formaEnter.addEventListener('submit', (e) => {
                 var array4 = parseFloat(array2[0].longitud);
                 //console.log("array4 " + array4)
 
-
+                var array5 = arrayemail[0].correo;
 
 
                 mapa.innerHTML = '';
@@ -416,17 +444,46 @@ formaEnter.addEventListener('submit', (e) => {
 
                 values = codigo.value;
 
-                $('#enterreunionmodal').modal('hide');
-                formaEnter.reset();
-                formaEnter.querySelector('.error').innerHTML = '';
-                alert("Entraste con exito a la reunion");
-                reu.innerHTML = values;
-                buttonAppear.innerHTML = '<a>Borrar reunion</a>'
+
+                var viewemails = document.getElementById("viewemail");
+                var drope1 = viewemails.outerHTML;
+                var drope2 = drope1.substring("36")
+                var drope3 = drope2.substring("1", drope2.indexOf(','));
+
+                console.log('1 ' + viewemails)
+                console.log('2 ' + drope1)
+                console.log('3 ' + drope2)
+                console.log('4 ' + drope3)
+
+
+
+                if (arrayemail[0].correo == drope3) {
+                    $('#enterreunionmodal').modal('hide');
+                    formaEnter.reset();
+                    formaEnter.querySelector('.error').innerHTML = '';
+                    alert("Entraste con exito a la reunion");
+                    reu.innerHTML = values;
+                    buttonAppear.innerHTML = '<a data-target="#dropreunionmodal" >Borrar reunion</a>'
+                } else {
+                    $('#enterreunionmodal').modal('hide');
+                    formaEnter.reset();
+                    formaEnter.querySelector('.error').innerHTML = '';
+                    alert("Entraste con exito a la reunion");
+                    reu.innerHTML = values;
+                    buttonAppear.innerHTML = '<a onclick="refreshPage()">Salir Reunion</a>'
+                }
+
             });
         } else {
-            
+
         }
     } else {
 
     }
 });
+
+function refreshPage(){
+    window.location.reload();
+}
+
+//(user);
