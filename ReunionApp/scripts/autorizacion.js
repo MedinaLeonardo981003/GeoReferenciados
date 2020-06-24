@@ -435,6 +435,8 @@ formaEnter.addEventListener('submit', (e) => {
                 //Se transforman las variables de longitud a Float para poder mandarlas a un marcador.
                 var array3 = parseFloat(array1[0].latitud);
                 var array4 = parseFloat(array2[0].longitud);
+                console.log("Lat" + array3);
+                console.log("Long" + array4);
                 //Se guarda el correo.
                 var array5 = arrayemail[0].correo;
 
