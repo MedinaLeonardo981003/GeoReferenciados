@@ -36,6 +36,7 @@
        cosiem = arre[0].nombre;
 
        //Se agrega a casillas de texto la informacion traida de firebase..
+       namaewas.innerHTML = '';
        namaewas.innerHTML = cosiem;
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
@@ -50,7 +51,7 @@
      var emialuser = user.email;
 
      var count = 0;
-     console.log("1");
+     console.log("2");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
