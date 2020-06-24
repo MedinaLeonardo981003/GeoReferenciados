@@ -136,6 +136,8 @@ entrarGoogle = () => {
 const formaAdd = document.getElementById('formaAdd');
 const formaAct = document.getElementById("childpid");
 const addReunionModalLabel = document.getElementById("addReunionModalLabel");
+const btnadd = document.getElementById("btnadd");
+
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -186,6 +188,7 @@ formaAdd.addEventListener('submit', (e) => {
         addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
+        btnadd.innerHTML =- '';
     })
 })
 

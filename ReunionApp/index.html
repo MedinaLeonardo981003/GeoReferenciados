@@ -38,10 +38,6 @@
       background-image: url("img/wall.jpg");
     }
 
-    #salir {
-      position: absolute;
-      right: 0;
-    }
 
     #map {
       max-width: 95%;
@@ -64,10 +60,18 @@
       font-size: 18px;
       font-weight: 50px;
       width: 250px;
+      position: absolute;
+      right: 0;
     }
 
-    .addre {
-      width: 250px;
+    #btnadd {
+      width: 450px;
+      position: absolute;
+      right: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 50px;
+      text-align: left;
     }
   </style>
 </head>
@@ -81,14 +85,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#addreunionmodal"
-          onclick="iniciaMapasss()" id="addre">Agregar Reunion</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentaReuniones">Mis
           Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#enterreunionmodal">Entrar a
           Reunion</a>
         <a id="buttonAppear" class="nav-item nav-link logged-in" href="#"></a>
+        <a class="nav-item nav-link logged-in btn btn-lg" href="#" data-toggle="modal" data-target="#addreunionmodal"
+          onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a>
         <a class="nav-item nav-link logged-in btn btn-danger btn-lg" href="#" id="salir">Salir</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal"
