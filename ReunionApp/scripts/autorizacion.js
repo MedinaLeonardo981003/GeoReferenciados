@@ -435,8 +435,8 @@ formaEnter.addEventListener('submit', (e) => {
                 //Se transforman las variables de longitud a Float para poder mandarlas a un marcador.
                 var array3 = parseFloat(array1[0].latitud);
                 var array4 = parseFloat(array2[0].longitud);
-                console.log("Lat" + array3);
-                console.log("Long" + array4);
+                console.log("Lat " + array3);
+                console.log("Long " + array4);
                 //Se guarda el correo.
                 var array5 = arrayemail[0].correo;
 
@@ -455,19 +455,10 @@ formaEnter.addEventListener('submit', (e) => {
 
                 };
 
-
                 //Se crea el nuevo mapa con las propiedades.
                 var map = new google.maps.Map(mapa, propiedades);
 
                 //Se crea el icono a usar.
-                var icono = {
-                    url: "./img/stick.png",
-                    scaledSize: new google.maps.Size(25, 25),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(0, 0)
-                };
-
-                //Se crea otro icono a usar.
                 var icono1 = {
                     url: "./img/markerr.png",
                     scaledSize: new google.maps.Size(25, 25),
@@ -487,6 +478,16 @@ formaEnter.addEventListener('submit', (e) => {
 
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
+
+
+
+                //Se crea el icono a usar.
+                var icono = {
+                    url: "./img/stick.png",
+                    scaledSize: new google.maps.Size(25, 25),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                };
 
 
                 //Se crea un marcador.
