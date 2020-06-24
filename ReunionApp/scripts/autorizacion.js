@@ -378,7 +378,8 @@ formaEnter.addEventListener('submit', (e) => {
     arrayemail = [];
     //Variables que guardaran el correo.
     var ema, ema2, ema3;
-
+    //variable que guardara el nombre de la reunion.
+    var namae;
     //Variables que guardan el codigo de la reunion.
     var codigos1 = codigosi.outerHTML;
     var codigos2 = codigos1.substring("15")
@@ -393,12 +394,17 @@ formaEnter.addEventListener('submit', (e) => {
                     //Se almacena el email obtenido de firebase.
                     "email": doc.data().email,
                 };
+                datass = {
+                    "nombre": doc.data().nombre
+                }
                 //Se añaden los valores obtenidos al arreglo.
                 arregloss.push(datas);
+                arregloname.push(datass);
                 //Se convierten en cadena.
                 ema = JSON.stringify(arregloss);
                 ema2 = ema.substring("11")
-                ema3 = ema2.substring("0", ema2.indexOf('"'))
+                ema3 = ema2.substring("0", ema2.indexOf('"'));
+                namae = JSON.stringify(arregloname);
             }
         })
     })
@@ -477,13 +483,13 @@ formaEnter.addEventListener('submit', (e) => {
                     map: map
 
                 });
-                var pos = { 
+                var pos = {
                     lat: array3,
                     lng: array4,
                 };
 
                 informaciones.setPosition(pos);
-                informaciones.setContent("Esta es tu ubicacion :3 ");
+                informaciones.setContent(namae);
                 informaciones.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
@@ -519,7 +525,6 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
 
-                informacion = new google.maps.InfoWindow;
                 //Obtenes la geolocalizacion del navegador.
                 if (navigator.geolocation) {
 
@@ -540,10 +545,6 @@ formaEnter.addEventListener('submit', (e) => {
                         map.panTo(new google.maps.LatLng(lat, lng))
 
 
-                        //Se otorga la informacion de la coordenada
-                        informacion.setPosition(watchId);
-                        informacion.setContent("Esta es tu ubicacion :3 ");
-                        informacion.open(map);
                     })
                 }
 
