@@ -464,6 +464,9 @@ formaEnter.addEventListener('submit', (e) => {
 
                 console.log("Lat " + array3);
                 console.log("Long " + array4);
+
+                informaciones = new google.maps.InfoWindow;
+
                 //Se crea un marcador.
                 var markers = new google.maps.Marker({
                     position: {
@@ -472,8 +475,12 @@ formaEnter.addEventListener('submit', (e) => {
                     },
                     icon: icono1,
                     map: map
+                    
                 });
 
+                informacion.setPosition(position);
+                    informacion.setContent("Esta es tu ubicacion :3 ");
+                    informacion.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
 
@@ -508,6 +515,7 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
 
+                informacion = new google.maps.InfoWindow;
                 //Obtenes la geolocalizacion del navegador.
                 if (navigator.geolocation) {
 
@@ -527,6 +535,11 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
 
+
+                        //Se otorga la informacion de la coordenada
+                        informacion.setPosition(watchId);
+                        informacion.setContent("Esta es tu ubicacion :3 ");
+                        informacion.open(map);
                     })
                 }
 
