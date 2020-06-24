@@ -462,8 +462,8 @@ formaEnter.addEventListener('submit', (e) => {
                     anchor: new google.maps.Point(0, 0)
                 };
 
-                console.log("Lat " + array3),
-                    console.log("Long " + array4);
+                console.log("Lat " + array3);
+                console.log("Long " + array4);
                 //Se crea un marcador.
                 var markers = new google.maps.Marker({
                     position: {
@@ -556,7 +556,6 @@ formaEnter.addEventListener('submit', (e) => {
                     //Agrega un boton de eliminar si los correos son iguales.
                     buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
                     formaAct.innerHTML = '';
-                    configuraMenu(user);
                 } else {
                     //Oculta el modal de Entrar a Reunion.
                     $('#enterreunionmodal').modal('hide');
