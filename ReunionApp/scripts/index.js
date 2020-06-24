@@ -8,6 +8,7 @@
  const correoenter = document.getElementById('correoenter');
  const viewemail = document.getElementById("viewemail");
  var buttonAppear = document.getElementById("buttonAppear");
+ var cosiem;
  //Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada.
  const configuraMenu = (user) => {
    //Se confirma que el usuario este autenticado.
@@ -34,8 +35,9 @@
 
      //Se iguala una variable al correo del usuario autenticado.
      var emialuser = user.email;
+     cosiem = emialuser;
      var count = 0;
-     console.log("Cambios1");
+     console.log("Cambios");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
@@ -82,9 +84,7 @@
  //Funcion que carga el mapa al momento de iniciar sesion, con el  watchposition funcionando
  function iniciaMapa() {
 
-  //Creacion variable user
-   var user = firebase.auth().currentUser;
-   var emailusers = user.email;
+
    //Se crean las propiedades que se usaran en el mapa.
    var propiedades = {
      center: {
@@ -144,8 +144,8 @@
        console.log(position);
 
        var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
+         lat: position.coords.latitude,
+         lng: position.coords.longitude
        }
        //Se guardan la coordenadas obtenidas.
        var coordenadas = lat + ',' + lng;
@@ -153,7 +153,7 @@
        //Se implementan las coordenadas en el marcador
        marker.setPosition(new google.maps.LatLng(lat, lng));
        informacion.setPosition(pos);
-       informacion.setContent(emailusers);
+       informacion.setContent(cosiem);
        informacion.open(map);
        map.panTo(new google.maps.LatLng(lat, lng));
 
