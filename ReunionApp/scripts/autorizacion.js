@@ -479,7 +479,7 @@ formaEnter.addEventListener('submit', (e) => {
                         lat: array3,
                         lng: array4
                     },
-                    icon: icono,
+                    icon: icono1,
                     map: map
                 });
 
@@ -493,7 +493,7 @@ formaEnter.addEventListener('submit', (e) => {
                         lat: 0,
                         lng: 0
                     },
-                    icon: icono1,
+                    icon: icono,
                     map: map
                 });
 
