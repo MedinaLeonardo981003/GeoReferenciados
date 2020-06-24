@@ -471,14 +471,18 @@ formaEnter.addEventListener('submit', (e) => {
                 var markers = new google.maps.Marker({
                     position: {
                         lat: array3,
-                        lng: array4,
+                        lng: array4
                     },
                     icon: icono1,
                     map: map
 
                 });
+                var pos = { 
+                    lat: array3,
+                    lng: array4,
+                };
 
-                informaciones.setPosition(position);
+                informaciones.setPosition(pos);
                 informaciones.setContent("Esta es tu ubicacion :3 ");
                 informaciones.open(map);
                 //Se agrega el marcador.
