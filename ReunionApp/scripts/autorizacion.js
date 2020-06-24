@@ -463,7 +463,7 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
                 console.log("Lat " + array3),
-                console.log("Long " + array4);
+                    console.log("Long " + array4);
                 //Se crea un marcador.
                 var markers = new google.maps.Marker({
                     position: {
@@ -503,7 +503,7 @@ formaEnter.addEventListener('submit', (e) => {
                 //Se crean las opciones para el marcador en teimpo real.
                 var positionOptions = {
                     enableHighAccuracy: true,
-                    timeout: 10 * 1000, //10 segundos
+                    timeout: 5 * 1000, //10 segundos
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
@@ -565,7 +565,7 @@ formaEnter.addEventListener('submit', (e) => {
                     alert("Entraste con exito a la reunion salir");
                     reu.innerHTML = values;
                     //Agrega un boton de salir si los correos son diferentes.
-                    buttonAppear.innerHTML = '<a onclick="refreshPage()">Salir Reunion</a>'
+                    buttonAppear.innerHTML = '<a data-toggle="modal" onclick="refreshPage()">Salir Reunion</a>'
                 }
 
             });

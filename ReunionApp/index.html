@@ -12,10 +12,10 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+  </script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -32,6 +32,9 @@
       color: white
     }
 
+    #buttonAppear {
+      color: white;
+    }
 
     body {
       color: black;
@@ -75,11 +78,11 @@
       color: white;
     }
 
-    #btnLogin{
+    #btnLogin {
       font-weight: 900;
     }
 
-    #btnGmail{
+    #btnGmail {
       font-weight: 900;
     }
   </style>
@@ -99,13 +102,16 @@
           Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#enterreunionmodal">Entrar a
           Reunion</a>
-        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
-        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal" data-target="#registratemodal">Regístrate</a>
+        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal"
+          data-target="#ingresarmodal">Ingresar</a>
+        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal"
+          data-target="#registratemodal">Regístrate</a>
       </div>
-      <span id="buttonAppear"> <a class="nav-item nav-link logged-in btn" href="#"></a> </span>
+      <span id="buttonAppear"> <a class="nav-item nav-link logged-in btn btn-lg" href="#"></a> </span>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <span id="buttonAppearAdd"><a class="nav-item nav-link logged-in btn btn-primary" href="#" data-toggle="modal" data-target="#addreunionmodal" onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a></span>
+          <span id="buttonAppearAdd"><a class="nav-item nav-link logged-in btn btn-primary" href="#" data-toggle="modal"
+              data-target="#addreunionmodal" onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a></span>
           <a class="nav-item nav-link logged-in btn btn-danger" href="#" id="salir">Salir</a>
         </div>
       </div>
@@ -147,8 +153,8 @@
             </div>
             <div class="row">
               <div class="col-12 text-center">
-                <span onclick="entrarGoogle()" id="btnGmail" class="btn btn-primary btn-danger btn-block">Continuar con Gmail <i
-                    class="fas fa-plus"></i></span>
+                <span onclick="entrarGoogle()" id="btnGmail" class="btn btn-primary btn-danger btn-block">Continuar con
+                  Gmail <i class="fas fa-plus"></i></span>
               </div>
             </div>
           </form>
@@ -287,7 +293,8 @@
                 <p class="error text-danger"></p>
               </div>
               <div class="col-6">
-                <button type="button" class="btn btn-secondary btn-danger btn-block" onclick="clearAdd()" data-dismiss="modal" >Cancelar</button>
+                <button type="button" class="btn btn-secondary btn-danger btn-block" onclick="clearAdd()"
+                  data-dismiss="modal">Cancelar</button>
               </div>
             </div>
           </form>
@@ -313,14 +320,16 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <input type="submit" id="smitdrop" style="margin-top: 10px;" class="btn btn-primary btn-block" value="Entrar a la reunión">
+                <input type="submit" id="smitdrop" style="margin-top: 10px;" class="btn btn-primary btn-block"
+                  value="Entrar a la reunión">
                 <p class="error text-danger"></p>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-danger" onclick="clearEnter()" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secondary btn-danger" onclick="clearEnter()"
+            data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
