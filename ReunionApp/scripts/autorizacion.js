@@ -505,7 +505,6 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
 
-                informacion = new google.maps.InfoWindow;
 
                 //Se crea un marcador.
                 var marker = new google.maps.Marker({
@@ -541,6 +540,8 @@ formaEnter.addEventListener('submit', (e) => {
                 var emailss = emails.substring("10");
                 var emailsss = emailss.substring("0", emailss.indexOf('"'));
 
+                //Creacion variable para almacenar info de marcador
+                informacion = new google.maps.InfoWindow;
 
                 //Obtenes la geolocalizacion del navegador.
                 if (navigator.geolocation) {
