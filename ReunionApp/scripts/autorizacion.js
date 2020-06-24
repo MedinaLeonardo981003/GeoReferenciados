@@ -188,7 +188,7 @@ formaAdd.addEventListener('submit', (e) => {
         addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
-        btnadd.innerHTML =- '';
+        document.body.removeChild(btnadd);
     })
 })
 
