@@ -480,7 +480,6 @@ formaEnter.addEventListener('submit', (e) => {
                 markers.setPosition(new google.maps.LatLng(array3, array4));
 
 
-
                 //Se crea el icono a usar.
                 var icono = {
                     url: "./img/stick.png",
@@ -546,8 +545,6 @@ formaEnter.addEventListener('submit', (e) => {
                 var emails = JSON.stringify(arrayemail[0]);
                 var emailss = emails.substring("10");
                 var emailsss = emailss.substring("0", emailss.indexOf('"'));
-                console.log(emailsss)
-                console.log(emas3)
 
 
                 //Se comparan las varibles obtenidas.
@@ -575,7 +572,7 @@ formaEnter.addEventListener('submit', (e) => {
 
             });
         } else {
-
+            console.log("Sabe")
         }
     } else {
 
