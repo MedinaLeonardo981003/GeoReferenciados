@@ -464,7 +464,7 @@ formaEnter.addEventListener('submit', (e) => {
                     formaEnter.querySelector('.error').innerHTML = '';
                     alert("Entraste con exito a la reunion");
                     reu.innerHTML = values;
-                    buttonAppear.innerHTML = '<a data-target="#dropreunionmodal" >Borrar reunion</a>'
+                    buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
                 } else {
                     $('#enterreunionmodal').modal('hide');
                     formaEnter.reset();
