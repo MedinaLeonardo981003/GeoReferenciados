@@ -37,7 +37,7 @@
      var emialuser = user.email;
      cosiem = emialuser;
      var count = 0;
-     console.log("Cambios");
+     console.log("1");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
@@ -162,6 +162,6 @@
 
    //Error para obtener la posicion.
    function error(positioError) {
-     console.log(positioError.messsage);
+     //console.log(positioError.messsage);
    }
  }
