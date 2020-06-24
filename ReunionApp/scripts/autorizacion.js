@@ -475,12 +475,12 @@ formaEnter.addEventListener('submit', (e) => {
                     },
                     icon: icono1,
                     map: map
-                    
+
                 });
 
-                informacion.setPosition(position);
-                    informacion.setContent("Esta es tu ubicacion :3 ");
-                    informacion.open(map);
+                informaciones.setPosition(position);
+                informaciones.setContent("Esta es tu ubicacion :3 ");
+                informaciones.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
 
