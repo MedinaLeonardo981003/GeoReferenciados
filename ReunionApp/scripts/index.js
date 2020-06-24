@@ -8,6 +8,8 @@
  const correoenter = document.getElementById('correoenter');
  const viewemail = document.getElementById("viewemail");
 
+
+//Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada
  const configuraMenu = (user) => {
    if (user) {
      db.collection('usuarios').doc(user.uid).get().then(doc => {
@@ -29,7 +31,7 @@
 
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio");
+     console.log("Cambio1");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          //console.log("Mi id:  " + doc.id);
@@ -49,11 +51,8 @@
              count = count + 1;
            }
          } else {
-           //console.log("No entro if")
          }
-         //console.log("No entro for")
        });
-       //console.warn(arreglo);
      })
 
      iniciaMapa();
@@ -68,6 +67,7 @@
  }
 
 
+ //Funcion que carga el mapa al momento de iniciar sesion, con el  watchposition funcionando
  function iniciaMapa() {
 
    var propiedades = {
@@ -104,7 +104,7 @@
 
    var positionOptions = {
      enableHighAccuracy: true,
-     timeout: 10 * 1000, //10 segundos
+     timeout: 5 * 1000, //5 segundos
      maximumAge: 30 * 1000 //30 segundos
    };
 
@@ -115,7 +115,7 @@
        var lat = position.coords.latitude;
        var lng = position.coords.longitude;
 
-       //console.log(position);
+       console.log(position);
 
        var coordenadas = lat + ',' + lng;
 
@@ -128,6 +128,6 @@
 
 
    function error(positioError) {
-     //console.log(positioError.messsage);
+     console.log(positioError.messsage);
    }
  }
