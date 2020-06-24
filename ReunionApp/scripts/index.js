@@ -14,9 +14,9 @@
 
  //Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada.
  const configuraMenu = (user) => {
+  namaewas.innerHTML = "";
    //Se confirma que el usuario este autenticado.
    if (user) {
-    namaewas.innerHTML = '';
      //Se toma la informacion de firebase.
      db.collection('usuarios').doc(user.uid).get().then(doc => {
        //Se agrega la informacion traida de firebase
@@ -50,7 +50,7 @@
      var emialuser = user.email;
 
      var count = 0;
-     console.log("5");
+     console.log("0");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
