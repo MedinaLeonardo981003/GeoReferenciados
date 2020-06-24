@@ -183,7 +183,7 @@ formaAdd.addEventListener('submit', (e) => {
         formaAdd.reset();
         formaAdd.querySelector('.error').innerHTML = '';
         alert("Reunion creada con exito");
-
+        formaAdd.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
     })

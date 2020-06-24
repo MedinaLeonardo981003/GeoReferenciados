@@ -12,10 +12,10 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    </script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -58,6 +58,17 @@
       width: 450;
       height: 450px;
     }
+
+    #salir {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 50px;
+      width: 250px;
+    }
+
+    .addre {
+      width: 250px;
+    }
   </style>
 </head>
 
@@ -71,14 +82,14 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#addreunionmodal"
-          onclick="iniciaMapasss()">Agregar Reunion</a>
+          onclick="iniciaMapasss()" id="addre">Agregar Reunion</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#micuentaReuniones">Mis
           Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#enterreunionmodal">Entrar a
           Reunion</a>
-        <a id="buttonAppear" class="nav-item nav-link logged-in" href="#" ></a>
-        <a class="nav-item nav-link logged-in btn btn-danger" href="#" id="salir">Salir</a>
+        <a id="buttonAppear" class="nav-item nav-link logged-in" href="#"></a>
+        <a class="nav-item nav-link logged-in btn btn-danger btn-lg" href="#" id="salir">Salir</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
         <a class="nav-item nav-link logged-out" href="#" data-toggle="modal"
           data-target="#registratemodal">Regístrate</a>
@@ -189,9 +200,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="micuentaModalLabel">Mi Cuenta</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
           <div class="row m-2">
@@ -200,7 +208,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
@@ -213,9 +221,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="micuentaReunionesLabel">Mis reuniones</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <form id="formaAct" autocomplete="off">
           <div class="row m-2">
@@ -226,7 +231,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
           </div>
         </form>
       </div>
@@ -240,9 +245,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="addReunionModalLabel">Agregar Reunión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
           <form id="formaAdd" autocomplete="off">
@@ -266,13 +268,11 @@
             <div class="row text-center">
               <div class="col-12">
                 <input type="submit" id="smitadd" class="btn btn-primary" value="Agregar">
+                <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
                 <p class="error text-danger"></p>
               </div>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -285,9 +285,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="enterReunionModalLabel">Entrar a Reunión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
           <form id="formaEnter" autocomplete="off">
@@ -305,7 +302,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
@@ -319,9 +316,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="dropReunionModalLabel">Eliminar Reunión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
           <form id="formaDrop" autocomplete="off">
@@ -332,14 +326,14 @@
             </div>
             <div class="row text-center">
               <div class="col-12">
-                <input type="submit" id="smitdrop" class="btn btn-primary" value="Borrar">
+                <input type="submit" id="smitdrop" class=" btn btn-primary" value="Borrar">
                 <p class="error text-danger"></p>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
