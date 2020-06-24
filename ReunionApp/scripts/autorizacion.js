@@ -638,3 +638,9 @@ const formaEnterr = document.getElementById('formaEnter');
 function clearEnter() {
     formaEnterr['codigo'].value = '';
 }
+
+//Funcion que permite limpiar las casillas de texto nombre
+const namaewasa = document.getElementById("namaewa");
+function clearname(){
+    namaewasa.innerHTML = '';
+  }
