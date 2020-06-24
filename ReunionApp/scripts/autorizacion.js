@@ -135,7 +135,7 @@ entrarGoogle = () => {
 
 const formaAdd = document.getElementById('formaAdd');
 const formaAct = document.getElementById("childpid");
-
+const addReunionModalLabel = document.getElementById("addReunionModalLabel");
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -183,7 +183,7 @@ formaAdd.addEventListener('submit', (e) => {
         formaAdd.reset();
         formaAdd.querySelector('.error').innerHTML = '';
         alert("Reunion creada con exito");
-        formaAdd.innerHTML = '';
+        addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
     })
