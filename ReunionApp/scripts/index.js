@@ -17,7 +17,6 @@
    namaewas.innerHTML = "";
    //Se confirma que el usuario este autenticado.
    if (user) {
-    refreshPage();
      //Se toma la informacion de firebase.
      db.collection('usuarios').doc(user.uid).get().then(doc => {
        //Se agrega la informacion traida de firebase
@@ -52,7 +51,7 @@
      var emialuser = user.email;
 
      var count = 0;
-     console.log("2");
+     console.log("1");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
