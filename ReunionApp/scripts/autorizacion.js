@@ -435,141 +435,140 @@ formaEnter.addEventListener('submit', (e) => {
                 var array4 = parseFloat(array2[0].longitud);
                 //Se guarda el correo.
                 var array5 = arrayemail[0].correo;
-            });
 
-            //Se limpia el mapa para poner el nuevo.
-            mapa.innerHTML = '';
-
+                //Se limpia el mapa para poner el nuevo.
+                mapa.innerHTML = '';
 
 
-            //Se crean las propiedades del mapa.
-            var propiedades = {
-                center: {
-                    lat: 21.152639,
-                    lng: -101.711598
-                },
-                zoom: 12
 
-            };
+                //Se crean las propiedades del mapa.
+                var propiedades = {
+                    center: {
+                        lat: 21.152639,
+                        lng: -101.711598
+                    },
+                    zoom: 12
 
-            //Se crea el nuevo mapa con las propiedades.
-            var map = new google.maps.Map(mapa, propiedades);
+                };
 
-            //Se crea el icono a usar.
-            var icono1 = {
-                url: "./img/markerr.png",
-                scaledSize: new google.maps.Size(25, 25),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0)
-            };
+                //Se crea el nuevo mapa con las propiedades.
+                var map = new google.maps.Map(mapa, propiedades);
 
-            console.log("Lat " + array3),
+                //Se crea el icono a usar.
+                var icono1 = {
+                    url: "./img/markerr.png",
+                    scaledSize: new google.maps.Size(25, 25),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                };
+
+                console.log("Lat " + array3),
                 console.log("Long " + array4);
-            //Se crea un marcador.
-            var markers = new google.maps.Marker({
-                position: {
-                    lat: array3,
-                    lng: array4,
-                },
-                icon: icono1,
-                map: map
+                //Se crea un marcador.
+                var markers = new google.maps.Marker({
+                    position: {
+                        lat: array3,
+                        lng: array4,
+                    },
+                    icon: icono1,
+                    map: map
+                });
+
+                //Se agrega el marcador.
+                markers.setPosition(new google.maps.LatLng(array3, array4));
+                map.panTo(new google.maps.LatLng(array3, array4))
+
+                //Se crea el icono a usar.
+                var icono = {
+                    url: "./img/stick.png",
+                    scaledSize: new google.maps.Size(25, 25),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                };
+
+
+                //Se crea un marcador.
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: 0,
+                        lng: 0
+                    },
+                    icon: icono,
+                    map: map
+                });
+
+                //Se crea una variable nula.
+                var watchId = null;
+
+                //Se crean las opciones para el marcador en teimpo real.
+                var positionOptions = {
+                    enableHighAccuracy: true,
+                    timeout: 10 * 1000, //10 segundos
+                    maximumAge: 30 * 1000 //30 segundos
+                };
+
+
+                //Obtenes la geolocalizacion del navegador.
+                if (navigator.geolocation) {
+
+                    //Se toma la variable para la localizacion en tiempo real, 
+                    //y se le agrega la funcion de tiempo real.
+                    watchId = navigator.geolocation.watchPosition(function (position) {
+                        var lat = position.coords.latitude;
+                        var lng = position.coords.longitude;
+
+                        console.log(position);
+
+                        //Se obtienen las coordenadas.
+                        var coordenadas = lat + ',' + lng;
+
+
+                        //Se agrega el marcador.
+                        marker.setPosition(new google.maps.LatLng(lat, lng));
+                        map.panTo(new google.maps.LatLng(lat, lng))
+
+                    })
+                }
+
+                //Se obtiene el codigo.
+                values = codigo.value;
+
+
+                //Se obtienen los correos en 2 variables para compararlos
+                var viewemails = document.getElementById("viewemail");
+                var emas1 = viewemails.outerHTML;
+                var emas2 = emas1.substring("36")
+                var emas3 = emas2.substring("1", emas2.indexOf(','));
+                //
+                var emails = JSON.stringify(arrayemail[0]);
+                var emailss = emails.substring("10");
+                var emailsss = emailss.substring("0", emailss.indexOf('"'));
+
+
+                //Se comparan las varibles obtenidas.
+                if (emailsss == emas3) {
+                    //Oculta el modal de Entrar a Reunion.
+                    $('#enterreunionmodal').modal('hide');
+                    formaEnter.reset();
+                    formaEnter.querySelector('.error').innerHTML = '';
+                    alert("Entraste con exito a la reunion eliminar");
+                    reu.innerHTML = values;
+                    //Agrega un boton de eliminar si los correos son iguales.
+                    buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
+                    formaAct.innerHTML = '';
+                    configuraMenu(user);
+                } else {
+                    //Oculta el modal de Entrar a Reunion.
+                    $('#enterreunionmodal').modal('hide');
+                    formaEnter.reset();
+                    formaEnter.querySelector('.error').innerHTML = '';
+                    alert("Entraste con exito a la reunion salir");
+                    reu.innerHTML = values;
+                    //Agrega un boton de salir si los correos son diferentes.
+                    buttonAppear.innerHTML = '<a onclick="refreshPage()">Salir Reunion</a>'
+                }
+
             });
-
-            //Se agrega el marcador.
-            markers.setPosition(new google.maps.LatLng(array3, array4));
-            map.panTo(new google.maps.LatLng(array3, array4))
-
-            //Se crea el icono a usar.
-            var icono = {
-                url: "./img/stick.png",
-                scaledSize: new google.maps.Size(25, 25),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0)
-            };
-
-
-            //Se crea un marcador.
-            var marker = new google.maps.Marker({
-                position: {
-                    lat: 0,
-                    lng: 0
-                },
-                icon: icono,
-                map: map
-            });
-
-            //Se crea una variable nula.
-            var watchId = null;
-
-            //Se crean las opciones para el marcador en teimpo real.
-            var positionOptions = {
-                enableHighAccuracy: true,
-                timeout: 10 * 1000, //10 segundos
-                maximumAge: 30 * 1000 //30 segundos
-            };
-
-
-            //Obtenes la geolocalizacion del navegador.
-            if (navigator.geolocation) {
-
-                //Se toma la variable para la localizacion en tiempo real, 
-                //y se le agrega la funcion de tiempo real.
-                watchId = navigator.geolocation.watchPosition(function (position) {
-                    var lat = position.coords.latitude;
-                    var lng = position.coords.longitude;
-
-                    console.log(position);
-
-                    //Se obtienen las coordenadas.
-                    var coordenadas = lat + ',' + lng;
-
-
-                    //Se agrega el marcador.
-                    marker.setPosition(new google.maps.LatLng(lat, lng));
-                    map.panTo(new google.maps.LatLng(lat, lng))
-
-                })
-            }
-
-            //Se obtiene el codigo.
-            values = codigo.value;
-
-
-            //Se obtienen los correos en 2 variables para compararlos
-            var viewemails = document.getElementById("viewemail");
-            var emas1 = viewemails.outerHTML;
-            var emas2 = emas1.substring("36")
-            var emas3 = emas2.substring("1", emas2.indexOf(','));
-            //
-            var emails = JSON.stringify(arrayemail[0]);
-            var emailss = emails.substring("10");
-            var emailsss = emailss.substring("0", emailss.indexOf('"'));
-
-
-            //Se comparan las varibles obtenidas.
-            if (emailsss == emas3) {
-                //Oculta el modal de Entrar a Reunion.
-                $('#enterreunionmodal').modal('hide');
-                formaEnter.reset();
-                formaEnter.querySelector('.error').innerHTML = '';
-                alert("Entraste con exito a la reunion eliminar");
-                reu.innerHTML = values;
-                //Agrega un boton de eliminar si los correos son iguales.
-                buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
-                formaAct.innerHTML = '';
-                configuraMenu(user);
-            } else {
-                //Oculta el modal de Entrar a Reunion.
-                $('#enterreunionmodal').modal('hide');
-                formaEnter.reset();
-                formaEnter.querySelector('.error').innerHTML = '';
-                alert("Entraste con exito a la reunion salir");
-                reu.innerHTML = values;
-                //Agrega un boton de salir si los correos son diferentes.
-                buttonAppear.innerHTML = '<a onclick="refreshPage()">Salir Reunion</a>'
-            }
-
-
         } else {
             console.log("Sabe");
         }
