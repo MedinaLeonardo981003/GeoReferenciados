@@ -590,6 +590,7 @@ formaEnter.addEventListener('submit', (e) => {
                     //Agrega un boton de eliminar si los correos son iguales.
                     buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
                     formaAct.innerHTML = '';
+                    namaewass.innerHTML = '';
                 } else {
                     //Oculta el modal de Entrar a Reunion.
                     $('#enterreunionmodal').modal('hide');
@@ -599,6 +600,7 @@ formaEnter.addEventListener('submit', (e) => {
                     reu.innerHTML = values;
                     //Agrega un boton de salir si los correos son diferentes.
                     buttonAppear.innerHTML = '<a data-toggle="modal" onclick="refreshPage()">Salir Reunion</a>'
+                    namaewass.innerHTML = '';
                 }
 
             });

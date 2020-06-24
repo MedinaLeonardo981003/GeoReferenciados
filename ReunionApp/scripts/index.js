@@ -49,7 +49,7 @@
      var emialuser = user.email;
 
      var count = 0;
-     console.log("2");
+     console.log("3");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
@@ -86,6 +86,7 @@
      datosdelacuenta.innerHTML = '';
      mapinfo.innerHTML = "";
      buttonAppear.innerHTML = '';
+     namaewas.innerHTML = '';
      //Se modifica el moddal para ocultar el modal de la ventana de home
      listaloggedin.forEach(item => item.style.display = 'none');
      listaloggedout.forEach(item => item.style.display = 'block');
