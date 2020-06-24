@@ -188,7 +188,7 @@ formaAdd.addEventListener('submit', (e) => {
         addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
-        document.body.removeChild(btnadd);
+        btnadd.removeAttribute("disabled");
     })
 })
 
@@ -287,6 +287,7 @@ formaDrop.addEventListener('submit', (e) => {
                     buttonAppear.innerHTML = '';
                     formaAct2.innerHTML = '';
                     configuraMenu(user);
+                    refreshPage();
                 } else {
 
                 }
@@ -468,6 +469,8 @@ formaEnter.addEventListener('submit', (e) => {
                     alert("Entraste con exito a la reunion");
                     reu.innerHTML = values;
                     buttonAppear.innerHTML = '<a data-toggle="modal" data-target="#dropreunionmodal" >Borrar reunion</a>'
+                    formaAct.innerHTML = '';
+                    configuraMenu(user);
                 } else {
                     $('#enterreunionmodal').modal('hide');
                     formaEnter.reset();
@@ -486,7 +489,7 @@ formaEnter.addEventListener('submit', (e) => {
     }
 });
 
-function refreshPage(){
+function refreshPage() {
     window.location.reload();
 }
 
