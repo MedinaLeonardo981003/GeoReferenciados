@@ -14,9 +14,10 @@
 
  //Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada.
  const configuraMenu = (user) => {
-  namaewas.innerHTML = "";
+   namaewas.innerHTML = "";
    //Se confirma que el usuario este autenticado.
    if (user) {
+    refreshPage();
      //Se toma la informacion de firebase.
      db.collection('usuarios').doc(user.uid).get().then(doc => {
        //Se agrega la informacion traida de firebase
@@ -99,7 +100,6 @@
  //Funcion que carga el mapa al momento de iniciar sesion, con el  watchposition funcionando
  function iniciaMapa() {
 
-
    //Se crean las propiedades que se usaran en el mapa.
    var propiedades = {
      center: {
@@ -181,3 +181,7 @@
    }
  }
 
+ //Funcion que permite refrescar la pagina
+ function refreshPage() {
+   window.location.reload();
+ }
