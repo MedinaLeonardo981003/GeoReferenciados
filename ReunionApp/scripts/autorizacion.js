@@ -473,12 +473,10 @@ formaEnter.addEventListener('submit', (e) => {
                     icon: icono1,
                     map: map
                 });
-                console.log("Lat1 " + array3),
-                console.log("Long1 " + array4);
 
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
-
+                map.panTo(new google.maps.LatLng(lat, lng))
 
                 //Se crea el icono a usar.
                 var icono = {
@@ -572,10 +570,10 @@ formaEnter.addEventListener('submit', (e) => {
 
             });
         } else {
-            console.log("Sabe")
+            console.log("Sabe");
         }
     } else {
-
+        console.log("Sabe2");
     }
 });
 
