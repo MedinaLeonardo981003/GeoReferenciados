@@ -376,6 +376,7 @@ formaEnter.addEventListener('submit', (e) => {
     array1 = [];
     array2 = [];
     arrayemail = [];
+    arregloname = [];
     //Variables que guardaran el correo.
     var ema, ema2, ema3;
     //variable que guardara el nombre de la reunion.
@@ -394,17 +395,12 @@ formaEnter.addEventListener('submit', (e) => {
                     //Se almacena el email obtenido de firebase.
                     "email": doc.data().email,
                 };
-                datass = {
-                    "nombre": doc.data().nombre
-                }
                 //Se añaden los valores obtenidos al arreglo.
                 arregloss.push(datas);
-                arregloname.push(datass);
                 //Se convierten en cadena.
                 ema = JSON.stringify(arregloss);
                 ema2 = ema.substring("11")
                 ema3 = ema2.substring("0", ema2.indexOf('"'));
-                namae = JSON.stringify(arregloname);
             }
         })
     })
@@ -429,18 +425,23 @@ formaEnter.addEventListener('submit', (e) => {
                     data3 = {
                         "email": doc.data().email,
                     };
+                    datas4 = {
+                        "nombre": doc.data().nombre
+                    };
                 });
                 //Se agrega la informacion obtenida a los arreglos
                 array1.push(data1);
                 array2.push(data2);
                 arrayemail.push(data3)
-
+                arregloname.push(datas4);
 
                 //Se transforman las variables de longitud a Float para poder mandarlas a un marcador.
                 var array3 = parseFloat(array1[0].latitud);
                 var array4 = parseFloat(array2[0].longitud);
+                
                 //Se guarda el correo.
                 var array5 = arrayemail[0].correo;
+
 
                 //Se limpia el mapa para poner el nuevo.
                 mapa.innerHTML = '';
@@ -468,8 +469,6 @@ formaEnter.addEventListener('submit', (e) => {
                     anchor: new google.maps.Point(0, 0)
                 };
 
-                console.log("Lat " + array3);
-                console.log("Long " + array4);
 
                 informaciones = new google.maps.InfoWindow;
 
@@ -489,7 +488,7 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
                 informaciones.setPosition(pos);
-                informaciones.setContent(namae);
+                informaciones.setContent(arregloname[0].nombre);
                 informaciones.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
