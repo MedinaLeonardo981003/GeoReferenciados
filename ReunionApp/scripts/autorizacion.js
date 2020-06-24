@@ -497,4 +497,16 @@ function refreshPage() {
     window.location.reload();
 }
 
+const formaAddd = document.getElementById('formaAdd');
+
+function clearAdd(){
+    formaAddd['rnombre'].value = '';
+    console.log('entro aqui')
+}
+
+
+const formaEnterr = document.getElementById('formaEnter');
+function clearEnter(){
+    formaEnterr['codigo'].value = '';
+}
 //(user);

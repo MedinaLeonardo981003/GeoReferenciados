@@ -29,13 +29,13 @@
     .logged-in,
     .logged-out {
       display: none;
-
+      color: white
     }
 
 
     body {
       color: black;
-      background-image: url("img/wall.jpg");
+      background-image: url("img/walll.jpg");
     }
 
 
@@ -276,7 +276,7 @@
             <div class="row text-center">
               <div class="col-12">
                 <input type="submit" id="smitadd" class="btn btn-primary" value="Agregar">
-                <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary btn-danger" onclick="clearAdd()" data-dismiss="modal" >Cancelar</button>
                 <p class="error text-danger"></p>
               </div>
             </div>
@@ -310,7 +310,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secondary btn-danger" onclick="clearEnter()" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
