@@ -543,8 +543,8 @@ formaEnter.addEventListener('submit', (e) => {
                         console.log(position);
 
                         var posit = {
-                            lat: position.coords.latitude;
-                            lng:  position.coords.longitude;
+                            lat: position.coords.latitude,
+                            lng:  position.coords.longitude
                         }
                         //Se obtienen las coordenadas.
                         var coordenadas = lat + ',' + lng;
