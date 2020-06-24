@@ -35,7 +35,7 @@
      //Se iguala una variable al correo del usuario autenticado.
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambios");
+     console.log("Cambios1");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
@@ -84,7 +84,7 @@
 
   //Creacion variable user
    var user = firebase.auth().currentUser;
-
+   var emailusers = user.email;
    //Se crean las propiedades que se usaran en el mapa.
    var propiedades = {
      center: {
@@ -153,7 +153,7 @@
        //Se implementan las coordenadas en el marcador
        marker.setPosition(new google.maps.LatLng(lat, lng));
        informacion.setPosition(pos);
-       informacion.setContent(user.email);
+       informacion.setContent(emailusers);
        informacion.open(map);
        map.panTo(new google.maps.LatLng(lat, lng));
 
