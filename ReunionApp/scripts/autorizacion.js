@@ -287,7 +287,6 @@ formaDrop.addEventListener('submit', (e) => {
                     buttonAppear.innerHTML = '';
                     formaAct2.innerHTML = '';
                     configuraMenu(user);
-                    refreshPage();
                 } else {
 
                 }
