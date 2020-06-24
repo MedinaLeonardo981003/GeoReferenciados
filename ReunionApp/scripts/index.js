@@ -35,7 +35,7 @@ var buttonAppear = document.getElementById("buttonAppear");
      //Se iguala una variable al correo del usuario autenticado.
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambios");
+     console.log("Cambios15");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {

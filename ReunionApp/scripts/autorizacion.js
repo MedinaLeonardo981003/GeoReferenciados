@@ -531,6 +531,17 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
 
+                //Se obtienen los correos en 2 variables para compararlos
+                var viewemails = document.getElementById("viewemail");
+                var emas1 = viewemails.outerHTML;
+                var emas2 = emas1.substring("36")
+                var emas3 = emas2.substring("1", emas2.indexOf(','));
+                //
+                var emails = JSON.stringify(arrayemail[0]);
+                var emailss = emails.substring("10");
+                var emailsss = emailss.substring("0", emailss.indexOf('"'));
+
+
                 //Obtenes la geolocalizacion del navegador.
                 if (navigator.geolocation) {
 
@@ -553,9 +564,8 @@ formaEnter.addEventListener('submit', (e) => {
                         //Se agrega el marcador.
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
-
                         informacion.setPosition(posit);
-                        informacion.setContent(arrayemail[0].email);
+                        informacion.setContent(emas3);
                         informacion.open(map);
 
                     })
@@ -565,16 +575,7 @@ formaEnter.addEventListener('submit', (e) => {
                 values = codigo.value;
 
 
-                //Se obtienen los correos en 2 variables para compararlos
-                var viewemails = document.getElementById("viewemail");
-                var emas1 = viewemails.outerHTML;
-                var emas2 = emas1.substring("36")
-                var emas3 = emas2.substring("1", emas2.indexOf(','));
-                //
-                var emails = JSON.stringify(arrayemail[0]);
-                var emailss = emails.substring("10");
-                var emailsss = emailss.substring("0", emailss.indexOf('"'));
-
+                
 
                 //Se comparan las varibles obtenidas.
                 if (emailsss == emas3) {
