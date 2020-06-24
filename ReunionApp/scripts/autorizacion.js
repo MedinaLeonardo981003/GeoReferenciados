@@ -492,7 +492,8 @@ formaEnter.addEventListener('submit', (e) => {
 
 
                 informaciones.setPosition(pos);
-                informaciones.setContent(namaewa1);
+                informaciones.setContent(arregloname[0].nombre);
+                console.log(arregloname[0].nombre)
                 informaciones.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
@@ -568,8 +569,8 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
                         informacion.setPosition(posit);
-                        informacion.setContent(cosname);
-                        console.log("anem" + cosname);
+                        informacion.setContent(namaewa1);
+                        console.log("anem " + namaewa1);
                         informacion.open(map);
 
                     })
