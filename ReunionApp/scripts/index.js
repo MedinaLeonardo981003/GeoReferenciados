@@ -50,7 +50,7 @@
      var emialuser = user.email;
 
      var count = 0;
-     console.log("4");
+     console.log("5");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {

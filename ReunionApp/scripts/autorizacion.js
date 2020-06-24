@@ -90,6 +90,7 @@ function mensajeError(codigo) {
 
 //Funcion para el inicio de sesion con sus respectivas credenciales.
 const formaingresar = document.getElementById('formaingresar');
+const namaewasss = document.getElementById("namaewa");
 //Funcion que da inicio a que el usuario pueda iniciar sesion.
 formaingresar.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -106,6 +107,7 @@ formaingresar.addEventListener('submit', (e) => {
         $('#ingresarmodal').modal('hide');
         formaingresar.reset();
         formaingresar.querySelector('.error').innerHTML = '';
+        namaewasss.innerHTML = '';
     }).catch(err => {
         //Manda un error en caso de que tenga alguno.
         formaingresar.querySelector('.error').innerHTML = mensajeError(err.code);
