@@ -377,6 +377,7 @@ formaEnter.addEventListener('submit', (e) => {
     array2 = [];
     arrayemail = [];
     arregloname = [];
+    arraymaili = []
     //Variables que guardaran el correo.
     var ema, ema2, ema3;
     //variable que guardara el nombre de la reunion.
@@ -438,9 +439,9 @@ formaEnter.addEventListener('submit', (e) => {
                 //Se transforman las variables de longitud a Float para poder mandarlas a un marcador.
                 var array3 = parseFloat(array1[0].latitud);
                 var array4 = parseFloat(array2[0].longitud);
-                
+
                 //Se guarda el correo.
-                var array5 = arrayemail[0].correo;
+                arraymaili = arrayemail[0].correo;
 
 
                 //Se limpia el mapa para poner el nuevo.
@@ -487,6 +488,7 @@ formaEnter.addEventListener('submit', (e) => {
                     lng: array4,
                 };
 
+
                 informaciones.setPosition(pos);
                 informaciones.setContent(arregloname[0].nombre);
                 informaciones.open(map);
@@ -503,6 +505,8 @@ formaEnter.addEventListener('submit', (e) => {
                 };
 
 
+                informacion = new google.maps.InfoWindow;
+
                 //Se crea un marcador.
                 var marker = new google.maps.Marker({
                     position: {
@@ -513,13 +517,16 @@ formaEnter.addEventListener('submit', (e) => {
                     map: map
                 });
 
+
+
+
                 //Se crea una variable nula.
                 var watchId = null;
 
                 //Se crean las opciones para el marcador en teimpo real.
                 var positionOptions = {
                     enableHighAccuracy: true,
-                    timeout: 5 * 1000, //10 segundos
+                    timeout: 10 * 1000, //10 segundos
                     maximumAge: 30 * 1000 //30 segundos
                 };
 
@@ -535,6 +542,10 @@ formaEnter.addEventListener('submit', (e) => {
 
                         console.log(position);
 
+                        var posit = {
+                            lat: position.coords.latitude;
+                            lng:  position.coords.longitude;
+                        }
                         //Se obtienen las coordenadas.
                         var coordenadas = lat + ',' + lng;
 
@@ -543,6 +554,9 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
 
+                        informacion.setPosition(posit);
+                        informacion.setContent(arrayemail[0].correo);
+                        informacion.open(map);
 
                     })
                 }
