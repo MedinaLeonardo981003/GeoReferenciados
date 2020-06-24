@@ -188,7 +188,7 @@ formaAdd.addEventListener('submit', (e) => {
         addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
-        btnadd.removeAttribute("disabled");
+        btnadd.forEach(item => item.style.display = 'none');
     })
 })
 
