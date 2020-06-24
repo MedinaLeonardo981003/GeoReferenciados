@@ -144,8 +144,8 @@
        console.log(position);
 
        var pos = {
-        lat = position.coords.latitude,
-        lng = position.coords.longitude
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
        }
        //Se guardan la coordenadas obtenidas.
        var coordenadas = lat + ',' + lng;
