@@ -9,6 +9,9 @@
  const viewemail = document.getElementById("viewemail");
  var buttonAppear = document.getElementById("buttonAppear");
  var cosiem;
+ const arre = [];
+ const namaewas = document.getElementById("namaewa");
+
  //Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada.
  const configuraMenu = (user) => {
    //Se confirma que el usuario este autenticado.
@@ -23,7 +26,16 @@
        const html1 = `
             <p>${ user.email},</p>
         `;
+       var datito = {
+         "nombre": doc.data().nombre
+       }
+
+       //Se le inserta la informacion al arreglo
+       arre.push(datito);
+       cosiem = arre[0].nombre;
+
        //Se agrega a casillas de texto la informacion traida de firebase..
+       namaewas.innerHTML = cosiem;
        datosdelacuenta.innerHTML = html;
        account.innerHTML = html1;
        correodrop.innerHTML = html1;
@@ -35,9 +47,9 @@
 
      //Se iguala una variable al correo del usuario autenticado.
      var emialuser = user.email;
-     cosiem = emialuser;
+
      var count = 0;
-     console.log("1");
+     console.log("2");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {

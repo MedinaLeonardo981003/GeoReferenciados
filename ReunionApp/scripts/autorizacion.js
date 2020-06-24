@@ -1,6 +1,6 @@
 const reu = document.getElementById('reu');
 const formaAct = document.getElementById("childpid");
-
+var cosname;
 //Funcion que se encarga de configurar el menu al momento de que el usuario inicia sesion o cierra la sesion.
 auth.onAuthStateChanged(user => {
 
@@ -162,7 +162,6 @@ formaAdd.addEventListener('submit', (e) => {
 
     //Manda llamar al usuario que esta actualmente logeado.
     var user = firebase.auth().currentUser;
-
     //Manda llamar el email de una casilla de texto, y lo transforma en una cadena de texto.
     //Para despues insertarlo en firebase.
     var emails1 = document.getElementById("raccount");
@@ -275,7 +274,6 @@ formaDrop.addEventListener('submit', (e) => {
 
     //Llama al usuario autenticado.
     var user = firebase.auth().currentUser;
-
     //Manda llamar el codigo de la reunion de la casilla de texto y lo convierte en una cadena.
     var codigos1 = codigos.outerHTML;
     var codigos2 = codigos1.substring("15")
@@ -362,15 +360,14 @@ var mapita = document.getElementById("map");
 var codigo = document.getElementById('codigo');
 var buttonAppear = document.getElementById('buttonAppear');
 var codigosi = document.getElementById('reu');
-
+const namaewass = document.getElementById("namaewa");
 //Funcion de la forma Entrar Reunion
 formaEnter.addEventListener('submit', (e) => {
     e.preventDefault();
 
     //Se llama el mapa para despues meterle los marcadores.
     var mapa = document.getElementById("map");
-    //Se llama al usuario que esta autenticado.
-    var user = firebase.auth().currentUser;
+
     //Se crean arreglos para guardar la informacion.
     arregloss = [];
     array1 = [];
@@ -386,6 +383,9 @@ formaEnter.addEventListener('submit', (e) => {
     var codigos1 = codigosi.outerHTML;
     var codigos2 = codigos1.substring("15")
     var codigos3 = codigos2.substring("0", codigos2.indexOf('<'));
+
+    //Variable que guardan el nombre del creador de la reunion.
+    var namaewa1 = namaewass.innerHTML;
 
     //Se accede a la informacion de firebase.
     db.collection('reuniones').get().then(doc => {
@@ -490,7 +490,7 @@ formaEnter.addEventListener('submit', (e) => {
 
 
                 informaciones.setPosition(pos);
-                informaciones.setContent(arregloname[0].nombre);
+                informaciones.setContent(namaewa1);
                 informaciones.open(map);
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
@@ -556,7 +556,7 @@ formaEnter.addEventListener('submit', (e) => {
 
                         var posit = {
                             lat: position.coords.latitude,
-                            lng:  position.coords.longitude
+                            lng: position.coords.longitude
                         }
                         //Se obtienen las coordenadas.
                         var coordenadas = lat + ',' + lng;
@@ -566,7 +566,8 @@ formaEnter.addEventListener('submit', (e) => {
                         marker.setPosition(new google.maps.LatLng(lat, lng));
                         map.panTo(new google.maps.LatLng(lat, lng))
                         informacion.setPosition(posit);
-                        informacion.setContent(emas3);
+                        informacion.setContent(cosname);
+                        console.log("anem" + cosname);
                         informacion.open(map);
 
                     })
@@ -576,7 +577,7 @@ formaEnter.addEventListener('submit', (e) => {
                 values = codigo.value;
 
 
-                
+
 
                 //Se comparan las varibles obtenidas.
                 if (emailsss == emas3) {
