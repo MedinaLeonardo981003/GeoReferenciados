@@ -77,6 +77,16 @@
       text-align: left;
       color: white;
     }
+
+    #btnLogin{
+      width: 250px;
+      font-weight: 900;
+      font-size: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 50px;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -98,8 +108,8 @@
         <span id="buttonAppearAdd" class="nav-item nav-link"><a class="logged-in btn btn-lg" href="#" data-toggle="modal"
             data-target="#addreunionmodal" onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a></span>
         <a class="nav-item nav-link logged-in btn btn-danger btn-lg" href="#" id="salir">Salir</a>
-        <a class="nav-item nav-link logged-out" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
-        <a class="nav-item nav-link logged-out" href="#" data-toggle="modal"
+        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal"  data-target="#ingresarmodal">Ingresar</a>
+        <a class="nav-item nav-link logged-out  btn btn-lg" href="#" data-toggle="modal"
           data-target="#registratemodal">Regístrate</a>
       </div>
     </div>
@@ -133,7 +143,7 @@
             </div>
             <div class="row text-center">
               <div class="col-12">
-                <input type="submit" class="btn btn-primary" value="Ingresar">
+                <input type="submit" class="btn btn-primary" id="btnLogin" value="Ingresar">
                 <p class="error text-danger"></p>
               </div>
             </div>

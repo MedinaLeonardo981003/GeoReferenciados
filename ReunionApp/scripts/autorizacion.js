@@ -467,7 +467,7 @@ formaEnter.addEventListener('submit', (e) => {
 
                 //Se crea otro icono a usar.
                 var icono1 = {
-                    url: "./img/gps.png",
+                    url: "./img/markerr.png",
                     scaledSize: new google.maps.Size(25, 25),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(0, 0)
