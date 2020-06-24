@@ -33,7 +33,7 @@ formaregistrate.addEventListener('submit', (e) => {
     //Crea el usuario, con las respectivas credenciales que otorgo anteriormente.
     auth.createUserWithEmailAndPassword(correos, contrasena).then(cred => {
         return db.collection('usuarios').doc(cred.user.uid).set({
-            nombre: formaregistrate['rnombre'].value,
+            nombre: formaregistrate['rnombres'].value,
             correo: formaregistrate['r2correo'].value
         });
 

@@ -7,8 +7,7 @@
  const correodrop = document.getElementById('correodrop');
  const correoenter = document.getElementById('correoenter');
  const viewemail = document.getElementById("viewemail");
-
-
+var buttonAppear = document.getElementById("buttonAppear");
  //Esta funcion se encarga de configurar el menu cuando el usuario inicia sesion o cuando la sesion esta cerrada.
  const configuraMenu = (user) => {
    //Se confirma que el usuario este autenticado.
@@ -36,7 +35,7 @@
      //Se iguala una variable al correo del usuario autenticado.
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio1");
+     console.log("Cambio");
      //Se obtiene la informacion desde firebase.
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
@@ -72,6 +71,7 @@
      //Se vacia la informacion.
      datosdelacuenta.innerHTML = '';
      mapinfo.innerHTML = "";
+     buttonAppear.innerHTML = '';
      //Se modifica el moddal para ocultar el modal de la ventana de home
      listaloggedin.forEach(item => item.style.display = 'none');
      listaloggedout.forEach(item => item.style.display = 'block');
