@@ -144,7 +144,7 @@ formaAdd.addEventListener('submit', (e) => {
     var emails2 = emails1.outerHTML;
     var emails3 = emails2.substring("17")
     var emails4 = emails3.substring("16", emails3.indexOf(','));
-    var emailinfo = document.getElementById("emailview");
+    var emailinfo = document.getElementById("viewemail");
     emailinfo.innerHTML = emails4;
 
     var lat1 = document.getElementById("latitude_view");
