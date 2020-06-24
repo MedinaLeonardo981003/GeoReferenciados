@@ -555,7 +555,7 @@ formaEnter.addEventListener('submit', (e) => {
                         map.panTo(new google.maps.LatLng(lat, lng))
 
                         informacion.setPosition(posit);
-                        informacion.setContent(arrayemail[0].correo);
+                        informacion.setContent(arrayemail[0].email);
                         informacion.open(map);
 
                     })
