@@ -433,8 +433,6 @@ formaEnter.addEventListener('submit', (e) => {
                 //Se transforman las variables de longitud a Float para poder mandarlas a un marcador.
                 var array3 = parseFloat(array1[0].latitud);
                 var array4 = parseFloat(array2[0].longitud);
-                console.log("Lat " + array3);
-                console.log("Long " + array4);
                 //Se guarda el correo.
                 var array5 = arrayemail[0].correo;
 
@@ -464,15 +462,19 @@ formaEnter.addEventListener('submit', (e) => {
                     anchor: new google.maps.Point(0, 0)
                 };
 
+                console.log("Lat " + array3),
+                console.log("Long " + array4);
                 //Se crea un marcador.
                 var markers = new google.maps.Marker({
                     position: {
                         lat: array3,
-                        lng: array4
+                        lng: array4,
                     },
                     icon: icono1,
                     map: map
                 });
+                console.log("Lat1 " + array3),
+                console.log("Long1 " + array4);
 
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
