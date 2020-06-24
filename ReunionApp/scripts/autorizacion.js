@@ -476,7 +476,7 @@ formaEnter.addEventListener('submit', (e) => {
 
                 //Se agrega el marcador.
                 markers.setPosition(new google.maps.LatLng(array3, array4));
-                map.panTo(new google.maps.LatLng(array3, array4))
+                map.panTo(new google.maps.LatLng(lat, lng))
 
                 //Se crea el icono a usar.
                 var icono = {

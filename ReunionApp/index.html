@@ -57,35 +57,30 @@
 
     #salir {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 900;
       width: 250px;
-      position: absolute;
       right: 0;
       color: white;
+      margin-right: 1px;
     }
 
     #btnadd {
-      width: 450px;
+      width: 250px;
       font-weight: 900;
-      font-size: 18px;
-      position: absolute;
+      font-size: 15px;
       right: 0;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      font-weight: 50px;
-      text-align: left;
+      margin-right: 10px;
       color: white;
     }
 
     #btnLogin{
-      width: 250px;
       font-weight: 900;
-      font-size: 18px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      font-weight: 50px;
-      text-align: center;
+    }
+
+    #btnGmail{
+      font-weight: 900;
     }
   </style>
 </head>
@@ -104,15 +99,15 @@
           Reuniones</a>
         <a class="nav-item nav-link logged-in" href="#" data-toggle="modal" data-target="#enterreunionmodal">Entrar a
           Reunion</a>
-        <span id="buttonAppear" class="nav-item nav-link"><a class="logged-in" href="#"></a></span>
-        <span id="buttonAppearAdd" class="nav-item nav-link"><a class="logged-in btn btn-lg" href="#" data-toggle="modal"
-            data-target="#addreunionmodal" onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a></span>
-        <a class="nav-item nav-link logged-in btn btn-danger btn-lg" href="#" id="salir">Salir</a>
-        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal"  data-target="#ingresarmodal">Ingresar</a>
-        <a class="nav-item nav-link logged-out  btn btn-lg" href="#" data-toggle="modal"
-          data-target="#registratemodal">Regístrate</a>
+        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal" data-target="#ingresarmodal">Ingresar</a>
+        <a class="nav-item nav-link logged-out btn btn-lg" href="#" data-toggle="modal" data-target="#registratemodal">Regístrate</a>
       </div>
-    </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link logged-in btn btn-primary" href="#" data-toggle="modal" data-target="#addreunionmodal" onclick="iniciaMapasss()" id="btnadd">Agregar Reunion</a></span>
+          <a class="nav-item nav-link logged-in btn btn-danger" href="#" id="salir">Salir</a>
+        </div>
+      </div>
   </nav>
 
 
@@ -129,31 +124,33 @@
         </div>
         <div class="modal-body">
           <form id="formaingresar">
-            <div class="row m-2">
+            <div class="row">
               <div class="col-12">
+                <label for="email">Correo:</label>
                 <input type="email" class="form-control" required id="correo"
                   placeholder="Ingrese su correo electrónico">
               </div>
             </div>
-            <div class="row m-2">
+            <div class="row" style="margin-bottom: 20px;">
               <div class="col-12">
+                <label for="email">Contraseña:</label>
                 <input type="password" class="form-control" required id="contrasena"
                   placeholder="Ingrese su contraseña">
               </div>
             </div>
             <div class="row text-center">
               <div class="col-12">
-                <input type="submit" class="btn btn-primary" id="btnLogin" value="Ingresar">
+                <input type="submit" class="btn btn-primary btn-block" id="btnLogin" value="Ingresar">
                 <p class="error text-danger"></p>
               </div>
             </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <span onclick="entrarGoogle()" id="btnGmail" class="btn btn-primary btn-danger btn-block">Continuar con Gmail <i
+                    class="fas fa-plus"></i></span>
+              </div>
+            </div>
           </form>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center">
-            <span onclick="entrarGoogle()" class="btn btn-primary btn-danger">Continuar con Gmail <i
-                class="fas fa-plus"></i></span>
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -283,11 +280,13 @@
                 <p hidden><b>Longitude:</b> <span id="longitude_view"></span></p>
               </div>
             </div>
-            <div class="row text-center">
-              <div class="col-12">
-                <input type="submit" id="smitadd" class="btn btn-primary" value="Agregar">
-                <button type="button" class="btn btn-secondary btn-danger" onclick="clearAdd()" data-dismiss="modal" >Cancelar</button>
+            <div class="row">
+              <div class="col-6">
+                <input type="submit" id="smitadd" class="btn btn-primary btn-block" value="Agregar">
                 <p class="error text-danger"></p>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-secondary btn-danger btn-block" onclick="clearAdd()" data-dismiss="modal" >Cancelar</button>
               </div>
             </div>
           </form>
@@ -306,14 +305,14 @@
         </div>
         <div class="modal-body">
           <form id="formaEnter" autocomplete="off">
-            <div class="row m-2">
+            <div class="row m-1">
               <div class="col-12" id="correoenter" hidden>
               </div>
               <input type="text" class="form-control" id="codigo" required placeholder="Codigo de la reunion">
             </div>
-            <div class="row text-center">
+            <div class="row">
               <div class="col-12">
-                <input type="submit" id="smitdrop" class="btn btn-primary" value="Enter">
+                <input type="submit" id="smitdrop" style="margin-top: 10px;" class="btn btn-primary btn-block" value="Entrar a la reunión">
                 <p class="error text-danger"></p>
               </div>
             </div>
