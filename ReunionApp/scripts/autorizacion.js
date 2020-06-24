@@ -179,16 +179,14 @@ formaAdd.addEventListener('submit', (e) => {
     var lat2 = lat1.outerHTML;
     var lat3 = lat2.substring("17")
     var lat4 = lat3.substring("8", lat3.indexOf('|'));
-    var lat5 = parseFloat(lat4);
-
+    var lat5 = lat4.toString();
     //Manda llamar la longitud de una casilla de texto, y lo transforma en una cadena de texto.
     //Para despues insertarlo en firebase.
     var long1 = document.getElementById("longitude_view");
     var long2 = long1.outerHTML;
     var long3 = long2.substring("17")
     var long4 = long3.substring("9", long3.indexOf('|'));
-    var long5 = parseFloat(long4);
-
+    var long5 = long4.toString();
 
     //Esta funcion crea aleatoriamente una cadena de numeros y letras
     //con un largo de caracteres, para la creacion del codigo de la reunion
