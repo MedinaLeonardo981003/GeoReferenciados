@@ -1,4 +1,5 @@
 const reu = document.getElementById('reu');
+const formaAct = document.getElementById("childpid");
 
 auth.onAuthStateChanged(user => {
 
@@ -134,9 +135,9 @@ entrarGoogle = () => {
 
 
 const formaAdd = document.getElementById('formaAdd');
-const formaAct = document.getElementById("childpid");
 const addReunionModalLabel = document.getElementById("addReunionModalLabel");
 const btnadd = document.getElementById("btnadd");
+var buttonAppear2 = document.getElementById('buttonAppear2');
 
 formaAdd.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -188,7 +189,7 @@ formaAdd.addEventListener('submit', (e) => {
         addReunionModalLabel.innerHTML = '';
         formaAct.innerHTML = '';
         configuraMenu(user);
-        btnadd.remove;
+        buttonAppear2.innerHTML = '';
     })
 })
 
@@ -227,7 +228,6 @@ function iniciaMapasss() {
 
 
 const formaDrop = document.getElementById('formaDrop');
-const formaAct2 = document.getElementById("childpid");
 var codigos = document.getElementById('reu');
 
 formaDrop.addEventListener('submit', (e) => {
@@ -246,57 +246,62 @@ formaDrop.addEventListener('submit', (e) => {
 
     var arr, arr2, arr3;
     arreglos = [];
-    db.collection('reuniones').get().then(doc => {
-        doc.docs.forEach(doc => {
-            //console.log(doc.id);
-            if (doc.data().codigo == codigos3) {
-                data = {
-                    "email": doc.data().email,
-                };
-                arreglos.push(data);
-                arr = JSON.stringify(arreglos);
-                //console.log(arr)       
-                arr2 = arr.substring("11")
-                arr3 = arr2.substring("0", arr2.indexOf('"'))
-            }
-        })
+    var confir = prompt("Seguro que quieres borrar tu esta reunion: Escribe SI en caso de querer borrarla");
+    if (confir == "SI" || confir == "si" || confir == "Si") {
+        db.collection('reuniones').get().then(doc => {
+            doc.docs.forEach(doc => {
+                //console.log(doc.id);
+                if (doc.data().codigo == codigos3) {
+                    data = {
+                        "email": doc.data().email,
+                    };
+                    arreglos.push(data);
+                    arr = JSON.stringify(arreglos);
+                    //console.log(arr)       
+                    arr2 = arr.substring("11")
+                    arr3 = arr2.substring("0", arr2.indexOf('"'))
+                }
+            })
 
 
-        console.log(arr3)
-        if (user.email == arr3) {
-            // User is signed in.
+            console.log(arr3)
+            if (user.email == arr3) {
+                // User is signed in.
 
-            if (codigo != null) {
+                if (codigo != null) {
 
-                var dele = db.collection("reuniones").where("codigo", "==", codigos3);
+                    var dele = db.collection("reuniones").where("codigo", "==", codigos3);
 
-                if (codigo != dele) {
-                    //console.log(" 1 ");
-                    dele.get().then(function (querySnapshot) {
-                        //console.log(" 2 ");
-                        querySnapshot.forEach(function (doc) {
-                            //console.log(" 3 ");
-                            doc.ref.delete();
+                    if (codigo != dele) {
+                        //console.log(" 1 ");
+                        dele.get().then(function (querySnapshot) {
+                            //console.log(" 2 ");
+                            querySnapshot.forEach(function (doc) {
+                                //console.log(" 3 ");
+                                doc.ref.delete();
+                            });
                         });
-                    });
 
-                    $('#dropreunionmodal').modal('hide');
-                    formaDrop.reset();
-                    formaDrop.querySelector('.error').innerHTML = '';
-                    alert("Reunion eliminada con exito");
-                    buttonAppear.innerHTML = '';
-                    formaAct2.innerHTML = '';
-                    configuraMenu(user);
+                        $('#dropreunionmodal').modal('hide');
+                        formaDrop.reset();
+                        formaDrop.querySelector('.error').innerHTML = '';
+                        alert("Reunion eliminada con exito");
+                        buttonAppear.innerHTML = '';
+                        formaAct.innerHTML = '';
+                        configuraMenu(user);
+                    } else {
+
+                    }
                 } else {
 
                 }
             } else {
-
+                alert("Tienes que ser el creador de esta reunion para poder eliminarla");
             }
-        } else {
-            alert("Tienes que ser el creador de esta reunion para poder eliminarla");
-        }
-    })
+        })
+    } else {
+        alert("Intenta borrarla cuando estes seguro de querer hacerlo.");
+    }
 })
 
 

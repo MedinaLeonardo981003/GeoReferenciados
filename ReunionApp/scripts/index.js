@@ -29,7 +29,7 @@
 
      var emialuser = user.email;
      var count = 0;
-     console.log("Cambio1");
+     console.log("Cambio5");
      db.collection('reuniones').get().then(doc => {
        doc.docs.forEach(doc => {
          //console.log("Mi id:  " + doc.id);
@@ -115,7 +115,7 @@
        var lat = position.coords.latitude;
        var lng = position.coords.longitude;
 
-       console.log(position);
+       //console.log(position);
 
        var coordenadas = lat + ',' + lng;
 
@@ -128,6 +128,6 @@
 
 
    function error(positioError) {
-     console.log(positioError.messsage);
+     //console.log(positioError.messsage);
    }
  }
